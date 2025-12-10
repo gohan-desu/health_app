@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>ベジみくじ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --accent: #A9B92E;
+      --accent-light: #D7DE51;
+      --bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --text: #3f3535;
+      --shadow: rgba(0, 0, 0, 0.1);
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: "Noto Sans JP", sans-serif;
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+    }
+
+    /* ページ全体の余白 */
+    .vege-wrapper {
+      text-align: center;
+      padding: 24px;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    /* タイトル（ホーム画面の雰囲気に合わせた） */
+    .title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin: 10px 0 20px;
+      color: var(--accent-dark);
+    }
+
+    /* メッセージ（フェードインそのまま） */
+    .message {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 10px 0 20px;
+      animation: fadein 0.8s ease-in;
+    }
+
+        /* 野菜カード */
+    .vege-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: transform .3s ease;
+    }
+    .vege-card:hover {
+      transform: scale(1.05);
+    }
+    .vege-card img {
+      max-width: 80%;
+      border-radius: 12px;
+    }
+    /* 黄緑の共通ボタン（ホーム画面のボタンに合わせる） */
+    .btn {
+      display: block;
+      width: 90%;
+      max-width: 350px;
+      margin: 0 auto;
+      padding: 14px 0;
+      background: var(--accent-light);
+      border-radius: 15px;
+      box-shadow: 0 4px 6px var(--shadow);
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: 0.2s ease;
+    }
+    .btn:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    @keyframes fadein {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="vege-wrapper">
+    <h1 class="title">ベジみくじ</h1>
+
+    <p id="veggie-text" class="message">読み込み中…</p>
+
+    <div class="vege-card">
+      <img id="veggie-img" alt="今日のラッキー野菜">
+    </div>
+    <br>
+    <a href="../home/index.html" class="btn">← ホームに戻る</a>
+  </main>
+
+  <script src="vege_mikuji.js" defer></script>
+</body>
+</html>

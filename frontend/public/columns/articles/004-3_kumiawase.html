@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>バランス献立の組み合わせルール</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <style>
+   /* ====== ページ固有レイアウト ====== */
+    .article-wrapper {
+      width: 100%;
+      max-width: 850px;
+      margin: 20px auto 120px;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+       .article-title {
+        font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 18px;
+  letter-spacing: 0.5px;
+  padding-left: 12px;
+  border-left: 6px solid #A3C04A; /* 縦ライン */
+  line-height: 1.4;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 28px 0 16px;
+      color: #D7DE51;
+    }
+
+    .article-box {
+      background: #F7F7F7;
+      padding: 24px;
+      border-radius: 14px;
+      margin: 24px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-box h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  color: #4A3F3F;
+}
+
+
+    .article-box ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+    }
+
+
+    /* 大きいカード全体 */
+.big-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px 24px 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin: 20px auto 60px;
+  max-width: 850px;
+}
+
+/* タイトル */
+.page-title {
+  text-align: center;
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #333;
+}
+
+/* 導入文 */
+.lead {
+  text-align: center;
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+
+.highlight {
+  background: #D7DE51;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* ===== 各ルールブロック ===== */
+.rule-block {
+  padding: 18px 4px 26px;
+  border-bottom: 1px dotted #CFCFA5;
+  margin-bottom: 18px;
+}
+
+.rule-block:last-child {
+  border-bottom: none;
+}
+
+/* 見出し */
+.rule-block h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #7A9E28;
+  margin-bottom: 10px;
+}
+
+/* テキスト */
+.rule-block p {
+  color: #444;
+  line-height: 1.85;
+  margin-bottom: 14px;
+}
+
+/* 単体画像 */
+.rule-img {
+  display: block;
+  width: 130px;
+  margin: 10px auto 0;
+}
+
+/* 横並び画像 */
+.img-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.img-wrap img {
+  width: 120px;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+     .article-wrapper {
+    padding: 0 10px;
+    margin-bottom: 80px;
+  }
+
+  .article-title {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+  .big-card {
+    padding: 22px 16px 32px;
+  }
+  .rule-block h3 {
+    font-size: 1.05rem;
+  }
+  .rule-img {
+    width: 110px;
+  }
+  .img-wrap img {
+    width: 100px;
+  }
+}
+
+/* タイトル＋リード文のカード */
+.top-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 26px 22px 32px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin: 20px auto 32px;
+  max-width: 850px;
+  text-align: center;
+}
+
+/* タイトル */
+.page-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 14px;
+}
+
+/* リード文 */
+.lead {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+/* 強調部分の黄緑背景 */
+.highlight {
+  background: #D7DE51;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+/* スマホ対応 */
+@media (max-width: 600px) {
+  .top-card {
+    padding: 22px 16px 28px;
+  }
+  .page-title {
+    font-size: 1.25rem;
+  }
+}
+
+.maru-key {
+  color: #A7BA4F; /* オリーブグリーン */
+  font-weight: 600; /* 少し太くすると読みやすい */
+}
+    /* 横スクロール禁止（ズレを100％防ぐ） */
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="app-header">
+    <button class="menu-btn" id="menu-toggle">☰</button>
+    <h1 class="page-title">コラム</h1>
+    <button class="icon-btn">
+      <img src="../../images/icon.png" alt="ユーザー" />
+    </button>
+  </header>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="side-menu">
+    <ul>
+      <li>
+      <a href="../../home/index.html">
+        <img src="../../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+      <li>
+        <a href="../../record/index.html">
+          <img src="../../images/pen.png" alt="記録" />
+          <span>記録</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../columns/000_ColumnHome/index.html">
+          <img src="../../images/article.png" alt="コラム" />
+          <span>コラム</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../check/index.html">
+          <img src="../../images/human.png" alt="適量チェック" />
+          <span>適量チェック</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- コンテンツ -->
+  <main class="content">
+    <main class="article-wrapper">
+               <!-- タイトル -->
+      <h2 class="article-title">バランス献立の組み合わせルール</h2>
+       <p>
+          　<span class="maru-key">主食・主菜・副菜の「調達」</span>を守ることで、
+        ３つの料理の組み合わせ方が工夫できる！
+        </p>
+        <br>
+ 
+</div>
+    <div class="big-card">
+      <!-- ===== ① ===== -->
+      <div class="rule-block">
+        <h3>①　３つの料理とも適量を守る</h3>
+        <p>それぞれの皿の栄養素やカロリー量を意識し、食べ過ぎを防ごう！</p>
+        <img src="../../images/ng.png" alt="食べ過ぎるイラスト" class="ng-img">
+      </div>
+
+      <!-- ===== ② ===== -->
+      <div class="rule-block">
+        <h3>②　同じ種類を重ねない</h3>
+        <p>主食・主菜・副菜は、それぞれ「1品」が原則！<br>
+        同じ種類の料理を避け、栄養の偏りを防ごう！</p>
+      </div>
+
+      <!-- ===== ③ ===== -->
+      <div class="rule-block">
+        <h3>③　同じ調理法を重ねない</h3>
+        <p>揚げ物や炒め物など、油や塩分の多い料理が２品以上続くと、摂取量が過剰になりがち！<br>
+        「揚げる・炒める・煮る・和える・蒸す」など料理法を分散しよう！</p>
+
+        <div class="img-wrap">
+            <img src="../../images/tenp.png" alt="天ぷら">
+          <img src="../../images/curry.png" alt="カレー鍋">
+          <img src="../../images/itame.png" alt="炒め物">
+        </div>
+      </div>
+
+      <!-- ===== ④ ===== -->
+      <div class="rule-block">
+        <h3>④　同じ主材料を重ねない</h3>
+        <p>品数が多くても、同じ食財や種類のものを
+        重ねて使うと、<br>摂取できる栄養素が偏っちゃう！</p>
+        <img src="../../images/sake.png" alt="定食のイラスト" class="rule-img">
+      </div>
+
+      <!-- ===== ⑤ ===== -->
+      <div class="rule-block">
+        <h3>⑤　汁物をプラス！料理の１品は汁物に</h3>
+        <p>汁物を加えることで、満足感が高まり、バランスも整いやすくなる！</p>
+      </div>
+
+    </div>
+
+  </main>
+  </main>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <a href="../../home/index.html" class="footer-btn">
+        <img src="../../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+      <a href="../../record/index.html" class="footer-btn">
+        <img src="../../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+      
+      <a href="../../columns/000_ColumnHome/index.html" class="footer-btn active">
+        <img src="../../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+      <a href="../../check/index.html" class="footer-btn">
+        <img src="../../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+      
+    </nav>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menu-toggle");
+    const sideMenu = document.getElementById("side-menu");
+
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  </script>
+
+</body>
+
+</html>

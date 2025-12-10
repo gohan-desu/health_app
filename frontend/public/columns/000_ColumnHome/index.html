@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コラム</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+
+<style>
+.content {
+  flex: 1;
+  padding-top: 56px;
+  overflow-y: auto;
+  color: #2A621E; 
+  font-size: 1.4em;
+  border-bottom: 3px solid #d9ead3; 
+  padding-bottom: 64px;
+  margin-top: 10px;
+  text-align: center;
+  display: flex; 
+  flex-wrap: wrap; /* 要素の折り返しを許可 */
+  align-items: flex-start; /* 上揃え */
+  justify-content: flex-start; 
+  padding-left: 220px; 
+  padding-right: 220px; 
+}
+
+
+.content p{
+  background: #ffffff;
+  padding: 18px 20px;
+  margin: 20px 0 30px;
+  border-radius: 14px;
+  box-shadow: 0 4px 8px var(--shadow);
+  line-height: 1.7;
+  color: #444;
+  font-size: 0.95rem;
+  text-align: center;
+  width: 100%; 
+}
+
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 28px 0 16px;
+  padding-left: 10px;
+  border-left: 4px solid #D7DE51;
+  color: var(--title);
+}
+
+/* h3, h4 のスタイルを修正 */
+.column-card h3, .column-card h4 {
+  font-size: 1rem; 
+  font-weight: 600; 
+  line-height: 1.4;
+}
+
+ /*  コラムカード */
+.column-card {
+  
+  background: #d9e76c;
+  padding: 22px 18px;
+  border-radius: 16px;
+  box-shadow: 0 3px 7px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #222;
+  transition: 0.2s ease;
+  display: flex;               
+  align-items: center;         
+  justify-content: center;      
+  text-align: center;           /* 文字の中央寄せ */
+}
+
+
+
+.column-card:hover {
+  background:#e8f17a;;
+  transform: translateY(-3px);
+}
+
+
+
+/* セクションの区切り（ドット線） */
+.section-divider {
+  border-top: 2px dotted #D7DE51;
+  margin: 40px 0;
+}
+
+
+.column-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto 1fr; 
+  gap: 15px; 
+  width: 100%; 
+  margin: 0 auto 20px auto; 
+}
+
+/* 左の大カード（1〜2段目を縦にぶち抜く） */
+.column-card.left-big {
+  grid-column: 1 / 2;
+  grid-row: 1 / 3;    
+  height: 200px;
+  
+  padding: 20px; /* 見栄えのためパディングを増やす */
+}
+
+/* 右上のカード */
+.column-card.right-top {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+  height: 90px;
+}
+
+/* 右下のカード */
+.column-card.right-bottom {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+  height: 90px;
+}
+
+/* 下の横長カード（全幅） */
+.column-card.large {
+  grid-column: 1 / 3;
+  grid-row: 3 / 4;
+  height: 210px;
+}
+
+
+a {
+  text-decoration: none;
+}
+
+
+@media (max-width: 600px) {
+  .column-grid {
+    column-count: 1fr;
+  }
+}
+
+</style>
+<body>
+  <!-- ヘッダー -->
+<header class="app-header">
+  <button class="menu-btn" id="menu-toggle">☰</button>
+  <h1 class="page-title">コラム</h1>
+  <button class="icon-btn">
+    <img src="../../images/icon.png" alt="ユーザー" />
+  </button>
+</header>
+
+<!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../home/index.html">
+        <img src="../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../record/index.html">
+        <img src="../../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../columns/000_ColumnHome/index.html">
+        <img src="../../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../check/index.html">
+        <img src="../../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+  <!-- コンテンツ領域 -->
+  <main class="content">
+    <p>ここでは「食事を見直すって、まずは何をすればいいの？」という方向けの記事となっています。<br>
+      栄養についての基礎知識やバランスのいい献立の考え方を載せています。<br>
+      ぜひ参考にしてみてください！
+    </p>
+   
+   <div class="column-grid">
+
+    <a href="../articles/003_DailyHome.html" class="column-card left-big">
+      <div class="column-text">
+      <h3>一日に必要なエネルギー及び食事量
+      </h3>
+      </div>
+    
+    </a>
+
+    <a href="../../columns/articles/001_eiyou.html" class="column-card right-top">
+      <div class="column-text">
+        <h4>どうして栄養って必要なの？</h4>
+      </div>
+    
+    </a>
+    <a href="../../columns/articles/002_warui.html" class="column-card right-bottom">
+      <div class="column-text">
+        <h4>バランスの悪い食事が続くと...</h4>
+      </div>
+    
+    </a>
+
+    <a href="../../columns/articles/004_BalanceHome.html" class="column-card large">
+      <div class="column-text">
+        <h4>バランスの良い食事の考え方</h4>
+      </div>
+    
+     </a>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <a href="../../home/index.html" class="footer-btn">
+        <img src="../../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+      
+      <a href="../../record/index.html" class="footer-btn">
+        <img src="../../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+
+      <a href="../000_ColumnHome/index.html" class="footer-btn">
+        <img src="../../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+
+      <a href="../../check/index.html" class="footer-btn">
+        <img src="../../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script src="../000_ColumnHome/script.js"></script>
+  
+</body>
+</html>

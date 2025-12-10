@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コラム</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="calendar.css" />
+  
+
+</head>
+<body>
+
+   <!-- ヘッダー -->
+<header class="app-header">
+  <button class="menu-btn" id="menu-toggle">☰</button>
+  <h1 class="page-title">記録</h1>
+  <button class="icon-btn">
+    <img src="../images/icon.png" alt="ユーザー" />
+  </button>
+</header>
+
+<!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../home/index.html">
+        <img src="../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../record/index.html">
+        <img src="../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../columns/000_ColumnHome/index.html">
+        <img src="../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../check/index.html">
+        <img src="../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+  <!-- コンテンツ領域 -->
+  <main class="content">
+<!-- 🎯 現在の目標表示 -->
+  <section class="goal-display">
+    <p><strong>今の目標：</strong> <span id="current-goal">未設定</span></p>
+    <button id="edit-goal-btn" class="edit-goal-btn">変更</button>
+  </section>
+
+  <main class="calendar-container">
+    <div class="calendar-header">
+      <div class="calendar-nav">
+        <button id="prev-month" aria-label="前の月">＜</button>
+
+        <div class="calendar-title">
+          <div id="year" class="year-text clickable">2025 ▼</div>
+          <div id="month" class="month-text clickable">7月 ▼</div>
+
+          <!-- 年/月 選択リスト -->
+          <div id="year-list" class="select-list hidden"></div>
+          <div id="month-list" class="select-list hidden"></div>
+        </div>
+
+        <button id="next-month" aria-label="次の月">＞</button>
+      </div>
+    </div>
+
+    <div class="calendar">
+      <div class="calendar-days">
+        <div class="day-label">Sun</div>
+        <div class="day-label">Mon</div>
+        <div class="day-label">Tue</div>
+        <div class="day-label">Wed</div>
+        <div class="day-label">Thu</div>
+        <div class="day-label">Fri</div>
+        <div class="day-label">Sat</div>
+      </div>
+
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </div>
+
+  <!-- 🥗 ポップアップ質問フォーム -->
+  <div id="question-modal" class="modal hidden">
+    <div class="modal-content">
+
+      <!-- 🧠 初回：診断式フォーム -->
+      <form id="question-form">
+        <h2>食習慣チェック</h2>
+        <div class="question">
+          <label>普段、野菜を食べる回数はどのくらいですか？</label>
+          <select name="q1">
+            <option value="rarely">ほとんど食べない</option>
+            <option value="once">1日1回くらい</option>
+            <option value="often">ほぼ毎食</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>間食をする頻度は？</label>
+          <select name="q2">
+            <option value="often">毎日する</option>
+            <option value="sometimes">時々する</option>
+            <option value="rarely">あまりしない</option>
+          </select>
+        </div>
+
+        <div class="question">
+          <label>水分補給はこまめにしていますか？</label>
+          <select name="q3">
+            <option value="no">あまりしていない</option>
+            <option value="some">1日1〜2回程度</option>
+            <option value="yes">よくしている</option>
+          </select>
+        </div>
+
+        <button type="submit" class="btn">おすすめ目標を表示</button>
+      </form>
+
+      <!-- ✏️ 再設定：手動フォーム -->
+      <form id="manual-form" class="hidden">
+        <h2>目標を再設定</h2>
+        <button type="button" id="close-goal-modal" class="close-btn">✕</button>
+
+
+
+        <div class="question">
+          <label>以下から選択：</label>
+          <div class="preset-goals">
+            <button type="button" class="preset-btn" data-goal="野菜を1日2食に取り入れよう！">野菜を1日2食に取り入れよう！</button><br>
+            <button type="button" class="preset-btn" data-goal="間食を1日1回までにしよう！">間食を1日1回までにしよう！</button><br>
+            <button type="button" class="preset-btn" data-goal="毎食後に水を1杯飲もう！">毎食後に水を1杯飲もう！</button><br>
+            <button type="button" class="preset-btn" data-goal="バランスを意識した食事を心がけよう！">バランスを意識した食事を心がけよう！</button>
+          </div>
+        </div>
+
+        <p class="or-divider">または</p>
+
+
+        <div class="question">
+          <label>自由入力：</label>
+          <input type="text" id="custom-goal" placeholder="自分で目標を入力する">
+        </div>
+
+
+        <button type="submit" class="btn">再設定する</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- 🏁 おすすめ目標表示 -->
+  <div id="goal-result" class="modal hidden">
+    <div class="modal-content">
+      <h2>あなたにおすすめの目標</h2>
+      <p id="goal-text"></p>
+      <button id="start-btn" class="btn">この目標で始める</button>
+    </div>
+  </div>
+
+  <!-- ✅ チェックリストモーダル -->
+  <div id="checklist-modal" class="modal hidden">
+    <div class="modal-content">
+         <!-- ✖️ ここを追加！ -->
+    <button class="close-btn" id="close-checklist-modal">×</button>
+
+      <h2 id="selected-date-title">日付の記録</h2>
+      <form id="checklist-form"></form>
+    </div>
+  </div>
+  </main>
+
+    <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <a href="../home/index.html" class="footer-btn">
+        <img src="../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+      <a href="../record/index.html" class="footer-btn active">
+        <img src="../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+
+      <a href="../columns/000_ColumnHome/index.html" class="footer-btn">
+        <img src="../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+
+      <a href="../check/index.html" class="footer-btn">
+        <img src="../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+  const menuBtn = document.getElementById("menu-toggle");
+  const sideMenu = document.getElementById("side-menu");
+
+  // 背景のオーバーレイを追加
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+
+  // 開閉処理
+  menuBtn.addEventListener("click", () => {
+    sideMenu.classList.toggle("open");
+    overlay.classList.toggle("show");
+  });
+
+  // 背景クリックで閉じる
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+
+
+</script>
+<script src="calendar.js"></script>
+
+</body>
+</html>

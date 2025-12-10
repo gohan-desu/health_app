@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>かんたんレシピ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --accent: #A9B92E;
+      --accent-light: #D7DE51;
+      --text: #3f3535;
+      --bg: #f9f9f9;
+      --card-bg: #ffffff;
+    }
+
+    /* 背景（アプリと同じ色調に） */
+    body {
+      margin: 0;
+      font-family: "Noto Sans JP", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    /* コンテナ */
+    .wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      text-align: center;
+    }
+
+    /* 上部ヒーロー部分 */
+    .hero {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    .hero img {
+      max-width: 240px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .message {
+      font-size: 1rem;
+      line-height: 1.6;
+      animation: fadein 0.8s ease-in;
+      color: var(--text);
+    }
+
+    /* レシピ一覧 */
+    .recipes {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 14px;
+      border: 1px solid #e5e7eb;
+      text-align: left;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.06);
+    }
+
+    .card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* 戻るボタンだけ、アプリ色に統一 */
+    .back {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 18px;
+      background: var(--accent-light);
+      border-radius: 14px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: 0.2s;
+    }
+
+    .back:hover {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    /* フェードイン */
+    @keyframes fadein {
+      from {opacity:0; transform: translateY(8px);}
+      to {opacity:1; transform: translateY(0);}
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <div class="hero">
+      <img id="veg-img" alt="">
+      <div>
+        <h1 id="veg-title">かんたんレシピ</h1>
+        <p id="veg-note" class="message"></p>
+      </div>
+    </div>
+
+    <section>
+      <h2 style="margin:6px 0 12px; color: var(--text);">3分で見れるレシピ</h2>
+
+      <div id="recipe-list" class="recipes"></div>
+
+      <a class="back" href="../home/index.html">← ホームに戻る</a>
+    </section>
+  </main>
+
+  <script src="recipe.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,513 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>適量チェック</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <style>
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background: #fff;
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+
+/* ===== ボタン ===== */
+.start-btn, .choice, .finish-btn{
+  background: #d9e76c;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 32px;
+  margin: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-weight: 600;
+}
+.start-btn:hover,
+.choice:hover,
+.finish-btn:hover {
+  background: #e8f17a;
+}
+.choice-box {
+  display: flex;
+  gap: 20px;
+}
+
+.next-btn {
+  background: #d9e76c;
+  border: none;
+  border-radius: 50%;
+  width: 60px;           /* ← 少し大きめに変更 */
+  height: 60px;
+  font-size: 28px;       /* ← 矢印を大きく */
+  font-weight: bold;     /* ← 太くする */
+  cursor: pointer;
+  color: #333;
+  margin-top: 40px;
+  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15); /* ← 少し立体感も出す */
+}
+
+.next-btn:hover {
+  background: #e8f17a;
+  transform: scale(1.05);
+}
+
+
+.choice.active {
+  background: #b4c700; /* ← 押した時に濃くなる */
+  color: #fff;         /* 文字色も白で強調 */
+}
+
+
+/* ===== 年齢スライダー ===== */
+.age-slider {
+  position: relative;
+  width: 70%;
+  margin: 40px auto;
+}
+.age-slider input[type="range"] {
+  width: 100%;
+  appearance: none;
+  height: 6px;
+  background: linear-gradient(to right, #c6d300 0%, #c6d300 30%, #ddd 30%, #ddd 100%);
+  border-radius: 5px;
+  outline: none;
+  transition: background 0.3s ease;
+}
+.age-slider input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: #c6d300;
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+}
+.age-bubble {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #f2f2f2;
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #333;
+  transform: translateX(-50%);
+  transition: left 0.3s ease;
+}
+
+/* ===== 進捗バー（フッター上固定） ===== */
+.progress-bar {
+  position: fixed;
+  bottom: 90px; /* ← フッターの高さに合わせて調整！（例：フッターが60pxなら+10px余白） */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 8px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 500;
+}
+
+.progress {
+  width: 0%;
+  height: 100%;
+  background: #c6d300;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
+
+/* ===== 各ステップ共通レイアウト調整 ===== */
+.check-step {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* ← 中央寄せ */
+  transition: left 0.5s ease;
+  padding-top: 60px; /* ← ヘッダー分の余白 */
+  box-sizing: border-box;
+}
+.check-step.active { left: 0; }
+.check-step.prev { left: -100%; }
+
+/* ===== 結果画面専用：中央固定調整 ===== */
+#step-result {
+  justify-content: center !important; /* ← 縦中央 */
+  align-items: center !important;
+  height: calc(100vh - 80px); /* ← ヘッダー分を除外 */
+  padding-top: 0; /* ← 追加の余白リセット */
+}
+
+/* ===== 結果画面：カード風デザイン ===== */
+
+
+#step-result h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+/* 結果テーブル（カード調） */
+.result-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 90%;
+  max-width: 600px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+/* ヘッダー部分（淡いグリーン） */
+.result-table thead th {
+  background: #d9e76c;
+  color: #333;
+  font-weight: 600;
+  padding: 14px;
+  border-bottom: 2px solid #eef0d0;
+}
+
+/* 本体部分（シンプル＆柔らかい色） */
+.result-table td {
+  background: #fff;
+  padding: 14px;
+  font-weight: 500;
+  border-top: 1px solid #f2f2f2;
+}
+
+/* 最下行の角を丸める */
+.result-table tr:last-child td:first-child {
+  border-bottom-left-radius: 16px;
+}
+.result-table tr:last-child td:last-child {
+  border-bottom-right-radius: 16px;
+}
+  .chart-credit {
+    font-size: 0.75rem;        /* 文字を少し小さくして整える */
+    line-height: 1.4;
+    margin-top: 8px;
+  }
+
+  .chart-credit a {
+    font-size: 0.75rem;
+    word-break: break-all;     /* 長いURLが画面から飛び出すのを防ぐ */
+  }
+.step-start a {
+    font-size: 0.75rem;
+    word-break: break-all;     /* 長いURLが画面から飛び出すのを防ぐ */
+  }
+  </style>
+</head>
+<body>
+ <!-- ヘッダー -->
+<header class="app-header">
+  <button class="menu-btn" id="menu-toggle">☰</button>
+  <h1 class="page-title">適量チェック</h1>
+  <button class="icon-btn">
+    <img src="../images/icon.png" alt="ユーザー" />
+  </button>
+</header>
+
+<!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../home/index.html">
+        <img src="../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../record/index.html">
+        <img src="../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../columns/000_ColumnHome/index.html">
+        <img src="../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../check/index.html">
+        <img src="../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<main class="check-container">
+  <!-- スタート -->
+  <section class="check-step active" id="step-start">
+    <p>あなたの一日分の食事の適量を調べてみましょう。</p>
+    <br>
+    <button class="start-btn" id="startCheck">適量チェックする！</button>
+    <br>
+    <br>
+    <p class="chart-credit">
+      "「食事バランスガイド｣の適量と料理区分"(農林水産省) (<a href="https://www.maff.go.jp/j/syokuiku/zissen_navi/yun/sheet.html" target="_blank">https://www.maff.go.jp/j/syokuiku/zissen_navi/yun/sheet.html</a>)をもとに作成しました。</p>
+    <p class="chart-credit">
+    出典：農林水産省"「食事バランスガイド｣の適量と料理区分"(2025年11月25日に利用)<br>
+    （<a href="https://www.maff.go.jp/j/syokuiku/zissen_navi/yun/sheet.html" target="_blank">https://www.maff.go.jp/j/syokuiku/zissen_navi/yun/sheet.html</a>）
+  </p>
+  </section>
+
+  <!-- 性別 -->
+  <section class="check-step" id="step-gender">
+    <h2>あなたの性別は？</h2>
+    <div class="choice-box">
+      <button class="choice">男</button>
+      <button class="choice">女</button>
+    </div>
+  </section>
+
+  <!-- 年齢 -->
+  <section class="check-step" id="step-age">
+    <h2>あなたの年齢は？</h2>
+    <div class="age-slider">
+      <input type="range" id="ageRange" min="10" max="90" value="20" step="1">
+      <div class="age-bubble" id="ageBubble">20歳</div>
+    </div>
+    <button class="next-btn" id="nextToActivity">→</button>
+  </section>
+
+  <!-- 活動量 -->
+  <section class="check-step" id="step-activity">
+    <h2>あなたの活動量は？</h2>
+    <div class="choice-box">
+      <button class="choice">低</button>
+      <button class="choice">普通</button>
+      <button class="choice">高</button>
+    </div>
+  </section>
+
+  <!-- 結果 -->
+  <section class="check-step" id="step-result">
+    <h2>あなたの１日分の適量</h2>
+    <table class="result-table">
+  <thead>
+    <tr>
+      <th>エネルギー</th>
+      <th>主食</th>
+      <th>副菜</th>
+      <th>主菜</th>
+      <th>牛乳・乳製品</th>
+      <th>果物</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>kcal</td>
+      <td>つ</td>
+      <td>つ</td>
+      <td>つ</td>
+      <td>つ</td>
+      <td>つ</td>
+    </tr>
+  </tbody>
+</table>
+
+  </section>
+
+</main>
+
+<!-- 進捗バー -->
+<div class="progress-bar">
+  <div class="progress"></div>
+</div>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+
+      <a href="../home/index.html" class="footer-btn">
+        <img src="../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+      <a href="../record/index.html" class="footer-btn">
+        <img src="../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>  
+
+      <a href="../columns/000_ColumnHome/index.html" class="footer-btn">
+        <img src="../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+
+      <a href="../check/index.html" class="footer-btn active">
+        <img src="../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+
+      
+    </nav>
+  </footer>
+
+  <script>
+const steps = document.querySelectorAll(".check-step");
+const progress = document.querySelector(".progress");
+const startBtn = document.getElementById("startCheck");
+const nextBtn = document.getElementById("nextToActivity");
+const finishBtn = document.getElementById("finishCheck");
+const menuBtn = document.getElementById("menu-toggle");
+const sideMenu = document.getElementById("side-menu");
+
+  // 背景のオーバーレイを追加
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+
+  // 開閉処理
+  menuBtn.addEventListener("click", () => {
+    sideMenu.classList.toggle("open");
+    overlay.classList.toggle("show");
+  });
+
+  // 背景クリックで閉じる
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+// 現在ステップ番号
+let current = 0;
+
+// 選択データ保持用
+let selectedGender = "";
+let selectedAge = 0;
+let selectedActivity = "";
+
+/* ===== ステップ切り替え ===== */
+function showStep(index) {
+  steps.forEach((s, i) => {
+    s.classList.remove("active", "prev");
+    if (i < index) s.classList.add("prev");
+    if (i === index) s.classList.add("active");
+  });
+  updateProgress(index);
+}
+
+/* ===== 進捗バー更新 ===== */
+function updateProgress(index) {
+  const totalSteps = steps.length - 1; // 結果画面を除く
+  const percent = (index / totalSteps) * 100;
+  progress.style.width = percent + "%";
+}
+
+/* ===== スタート ===== */
+startBtn.addEventListener("click", () => {
+  current = 1;
+  showStep(current);
+});
+
+/* ===== 性別選択 ===== */
+document.querySelectorAll("#step-gender .choice").forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedGender = btn.textContent; // ← 性別を保存
+    current++;
+    showStep(current);
+  });
+});
+
+/* ===== 年齢スライダー ===== */
+const ageRange = document.getElementById("ageRange");
+const ageBubble = document.getElementById("ageBubble");
+
+function updateAgeBubble() {
+  const val = ageRange.value;
+  const min = ageRange.min;
+  const max = ageRange.max;
+  const percent = ((val - min) / (max - min)) * 100;
+  ageBubble.textContent = `${val}歳`;
+  ageBubble.style.left = `calc(${percent}% + (${8 - percent * 0.15}px))`;
+  ageRange.style.background = `linear-gradient(to right, #c6d300 0%, #c6d300 ${percent}%, #ddd ${percent}%, #ddd 100%)`;
+}
+ageRange.addEventListener("input", updateAgeBubble);
+updateAgeBubble();
+
+nextBtn.addEventListener("click", () => {
+  selectedAge = Number(ageRange.value); // ← 年齢を保存
+  current = 3;
+  showStep(current);
+});
+
+/* ===== 活動量選択 ===== */
+document.querySelectorAll("#step-activity .choice").forEach(btn => {
+  btn.addEventListener("click", () => {
+    selectedActivity = btn.textContent; // ← 活動量を保存
+    showResult(); // ← 結果を生成
+    current = steps.length - 1;
+    showStep(current);
+  });
+});
+
+/* ===== 結果表示 ===== */
+function showResult() {
+  const resultRow = document.querySelector(".result-table tbody tr");
+
+  let pattern = 2;
+  const age = selectedAge;
+  const gender = selectedGender;
+  const activity = selectedActivity;
+
+  // === 男性 ===
+  if (gender === "男") {
+    if ((age >= 6 && age <= 9) || age >= 70) pattern = 1;
+    else if (age >= 10 && age <= 11) pattern = 2;
+    else if (age >= 12 && age <= 69) {
+      if (activity === "低") pattern = 2;
+      else pattern = 3;
+    }
+  }
+
+  // === 女性 ===
+  if (gender === "女") {
+    if ((age >= 6 && age <= 9) || age >= 70) pattern = 1;
+    else if (age >= 10 && age <= 69) {
+      if (activity === "低") pattern = 1;
+      else pattern = 2;
+    }
+  }
+
+  const data = {
+    1: { kcal: "1800±200", main: "4〜5", side: "5〜6", meat: "3〜4", milk: "2", fruit: "2" },
+    2: { kcal: "2200±200", main: "5〜7", side: "5〜6", meat: "3〜5", milk: "2", fruit: "2" },
+    3: { kcal: "2600±200", main: "7〜8", side: "6〜7", meat: "4〜6", milk: "2〜3", fruit: "2" }
+  };
+
+  const r = data[pattern];
+  resultRow.innerHTML = `
+    <td>${r.kcal} kcal</td>
+    <td>${r.main}つ</td>
+    <td>${r.side}つ</td>
+    <td>${r.meat}つ</td>
+    <td>${r.milk}つ</td>
+    <td>${r.fruit}つ</td>
+  `;
+}
+
+
+</script>
+
+</body>
+</html>

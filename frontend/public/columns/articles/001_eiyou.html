@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>どうして栄養って必要なの？</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <style>
+    /* ====== ページ固有レイアウト ====== */
+    .article-wrapper {
+      width: 100%;
+      max-width: 850px;
+      margin: 20px auto 120px;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #000;
+      margin: 20px 0;
+      border-left: 4px solid #D7DE51;
+      padding-left: 10px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 28px 0 16px;
+      color: #D7DE51;
+    }
+
+    .article-box {
+      background: #F7F7F7;
+      padding: 24px;
+      border-radius: 14px;
+      margin: 24px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-box h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  color: #4A3F3F;
+}
+
+
+    .article-box ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+    }
+
+/* 外枠 */
+.nutri-wrapper {
+  border: 5px solid #A7BA4F;
+  border-radius: 30px;
+  padding: 20px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+/* 表全体 */
+.nutri-table-new {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+}
+
+/* ヘッダー */
+.nutri-table-new thead th {
+  background: #ffffff;
+  padding: 12px 4px;
+  font-weight: 700;
+  font-size: 0.93rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* 列幅 */
+.col-food { width: 120px; text-align: left; padding-left: 6px; }
+.col-nutri { width: 120px; text-align: left; padding-left: 6px; }
+
+/* 本文セル */
+.nutri-table-new tbody td {
+  padding: 18px 6px;
+  border-bottom: 1px dashed #C8C8A8;
+  vertical-align: middle;
+}
+
+/* 最後の線消す */
+.nutri-table-new tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* フード列は左揃え */
+.nutri-table-new tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 栄養素名列も左揃え */
+.nutri-table-new tbody td:nth-child(2) {
+  text-align: left;
+  font-weight: 700;
+  color: #333;
+}
+/* ヘッダー共通 */
+.nutri-table-new thead th {
+  padding: 12px 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #333;
+  text-align: center;
+}
+
+/* 小さな丸（ヘッダー用） */
+.head-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 auto 4px;
+}
+
+.head-dot.red { background: #F25D4D; }
+.head-dot.yellow { background: #F4D44B; }
+.head-dot.green { background: #8BC776; }
+
+/* 各列に色をつける */
+.head-energy {
+  background: rgba(242, 93, 77, 0.18);    /* 赤系の柔らかい背景 */
+}
+
+.head-build {
+  background: rgba(244, 212, 75, 0.25);  /* 黄色系の柔らかい背景 */
+}
+
+.head-condition {
+  background: rgba(139, 199, 118, 0.22); /* 緑系の柔らかい背景 */
+}
+
+/* 丸アイコン */
+.dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.red { background: #F25D4D; }
+.yellow { background: #F4D44B; }
+.green { background: #8BC776; }
+
+
+/* ===== まとめ ===== */
+.summary-section {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 3px dotted #D7DE51;
+}
+
+.summary-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.summary-text {
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+/* ===== リンク部分 ===== */
+.summary-links {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.links-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #333;
+}
+
+.summary-links p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.summary-links a {
+  text-decoration: none;
+  color: #333;
+  word-break: break-all;
+}
+
+.summary-links a:hover {
+  text-decoration: underline;
+}
+
+/* 全体の文章の行間を広げる */
+body, p, li {
+  line-height: 1.9;
+}
+
+/* セクション本文を少しゆったり */
+.article-wrapper p {
+  margin-bottom: 1.2em;
+}
+
+/* 見出しとの余白を調整 */
+.section-title {
+  margin-top: 32px;
+  margin-bottom: 18px;
+}
+
+/* ================================
+   見出しのデザイン（画像そっくり）
+=================================== */
+
+/* h2（ページタイトル） */
+.article-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 18px;
+  letter-spacing: 0.5px;
+  padding-left: 12px;
+  border-left: 6px solid #A3C04A; /* 縦ライン */
+  line-height: 1.4;
+}
+
+/* h3 セクションタイトル */
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7A9E28; /* 黄緑 */
+  margin: 32px 0 14px;
+
+}
+
+/* ================================
+   本文
+=================================== */
+.content p,
+.article-wrapper p {
+  color: #333;
+  line-height: 2.0;      /* ゆったり行間 */
+  margin: 0 0 26px;      /* 段落間の余白 */
+  font-size: 0.98rem;
+}
+
+/* ================================
+   セクションの区切り（ドット線）
+=================================== */
+.section-divider {
+  border-top: 2px dotted #D7DE51;
+  margin: 40px 0;
+}
+
+/* ================================
+   全体の余白調整
+=================================== */
+.article-wrapper {
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto 120px;
+}
+
+.table-label {
+  padding: 10px 18px;
+  border-radius: 35px; /* ← 丸みの強さ */
+  color: #000;
+  font-weight: 600;
+  text-align: center;
+  display: inline-block;
+  line-height: 1.3;
+}
+
+/* カラー別（お好きに変えられる） */
+.label-energy { background: #f25f4c; }   /* 赤：エネルギー源 */
+.label-body   { background: #f6d85a; }   /* 黄色：体をつくる */
+.label-health { background: #9bd76a; }   /* 緑：調子を整える */
+
+
+
+/* ========== スマホ対応（幅 600px 以下） ========== */
+@media (max-width: 600px) {
+
+  .article-wrapper {
+    padding: 0 10px;
+    margin-bottom: 80px;
+  }
+
+  .article-title {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  /* ---- 栄養素表 ---- */
+  .nutri-wrapper {
+    padding: 12px;
+    border-width: 3px;
+  }
+
+  .nutri-table-new {
+    font-size: 0.8rem;
+  }
+
+  /* 列の幅を比率で調整 */
+  .col-food { width: 28%; padding-left: 2px !important; }
+  .col-nutri { width: 22%; padding-left: 2px !important; }
+  .col-energy,
+  .col-build,
+  .col-condition {
+    width: 16%;
+  }
+
+  /* ヘッダーの文字を小さく・行間調整 */
+  .nutri-table-new thead th {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    padding: 8px 2px;
+  }
+
+  /* 丸アイコン小さめに */
+  .dot {
+    width: 24px;
+    height: 24px;
+  }
+
+  .head-dot {
+    width: 14px;
+    height: 14px;
+    margin-bottom: 2px;
+  }
+
+  /* 表の行の高さをスマホ用に詰める */
+  .nutri-table-new tbody td {
+    padding: 12px 4px;
+  }
+
+  /* 表の横スクロール防止 */
+  .nutri-wrapper {
+    overflow-x: auto;
+  }
+
+  /* まとめ部分 */
+  .summary-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .links-title {
+    font-size: 0.95rem;
+  }
+
+  .summary-links p {
+    font-size: 0.8rem;
+  }
+}
+
+
+    /* 横スクロール禁止 */
+    html, body {
+      overflow-x: hidden;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="app-header">
+    <button class="menu-btn" id="menu-toggle">☰</button>
+    <h1 class="page-title">コラム</h1>
+    <button class="icon-btn">
+      <img src="../../images/icon.png" alt="ユーザー" />
+    </button>
+  </header>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="side-menu">
+    <ul>
+      <li>
+      <a href="../../home/index.html">
+        <img src="../../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+      <li>
+        <a href="../../record/index.html">
+          <img src="../../images/pen.png" alt="記録" />
+          <span>記録</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../columns/000_ColumnHome/index.html">
+          <img src="../../images/article.png" alt="コラム" />
+          <span>コラム</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../check/index.html">
+          <img src="../../images/human.png" alt="適量チェック" />
+          <span>適量チェック</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- コンテンツ -->
+  <main class="content">
+    <div class="article-wrapper">
+
+      <!-- タイトル -->
+      <h2 class="article-title">どうして栄養って必要なの？</h2>
+
+      <!-- 栄養とは -->
+      <section>
+        <h3 class="section-title">栄養とは</h3>
+
+        <p>
+          「栄養」とは、食事を摂取して、その成分を消化吸収し、利用することで生命を維持し、
+          成長・発達したり、健康を保つために必要な働きのことです。
+        </p>
+
+        <p>
+          栄養素は身体の正常な活動を保つうえで欠かせないものであり、不足すると体調不良や病気の
+          リスクが高まります。そのため栄養をバランスよく摂取することはとても重要です。
+        </p>
+      </section>
+
+      <div class="section-divider"></div>
+
+
+        <h3 class="section-title">5大栄養素と３つの働き</h3>
+
+        <p>
+          　5大栄養素とは、我々が生きるために欠かせないおもな栄養素の総称です。「炭水化物」「脂質」「タンパク質」「ビタミン」「ミネラル(無機質)」をバランスよく摂ることで、日々の健康を保っています。また栄養素はその働きによって、大きく３つに分けられます。
+        </p>
+
+      <!-- 5大栄養素 -->
+      <div class="article-box outline">
+
+
+  <h4>5大栄養素の特徴</h4>
+
+  <table class="nutrition-table">
+    <tr>
+      <td class="nutrition-left">炭水化物</td>
+      <td class="nutrition-right">身体や脳のエネルギー源。食物繊維を含む。</td>
+    </tr>
+
+    <tr>
+      <td class="nutrition-left">脂質</td>
+      <td class="nutrition-right">
+        効率の良いエネルギー源。細胞膜やホルモンの材料。
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nutrition-left">タンパク質</td>
+      <td class="nutrition-right">
+        筋肉・皮膚・血液など身体を構成する材料。
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nutrition-left">ビタミン</td>
+      <td class="nutrition-right">身体の調子を整え、代謝をサポート。</td>
+    </tr>
+
+    <tr>
+      <td class="nutrition-left">ミネラル（無機質）</td>
+      <td class="nutrition-right">骨や歯の材料となり、身体機能の維持に必要。</td>
+    </tr>
+  </table>
+</div>
+
+
+
+<div class="article-box outline">
+  <h4>3つの働き</h4>
+
+  <table class="nutrition-table">
+    <tr>
+      <td class="nutrition-left">① エネルギー源になる</td>
+      <td class="nutrition-right">
+        糖質・脂質・タンパク質がエネルギーとして利用される。
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nutrition-left">② 体をつくる材料になる</td>
+      <td class="nutrition-right">
+        筋肉・皮膚・血液など体の構成成分になる。
+      </td>
+    </tr>
+
+    <tr>
+      <td class="nutrition-left">③ 体の調子を整える</td>
+      <td class="nutrition-right">
+        ビタミン・ミネラルが代謝を助け、健康を維持する。
+      </td>
+    </tr>
+  </table>
+</div>
+
+<br>
+<section class="article-section">
+  <h3 class="section-title">栄養素対応表</h3>
+
+  <p class="table-caption">
+    わくわく！1週間の食事の栄養素を見つけようの表のマネ<br>
+    ここではわかりやすいように簡単にした版！<br>
+    栄養素と3つのはたらきの一部のみ
+  </p>
+
+<!-- 🔰 栄養素対応表（新版） -->
+<div class="nutri-wrapper">
+
+  <table class="nutri-table-new">
+  <thead>
+    <tr>
+      <th class="col-food">食品名</th>
+      <th class="col-nutri">栄養素名</th>
+
+      <th><span class="table-label label-energy">おもに<br>エネルギー源に<br>なる</span></th>
+
+<th><span class="table-label label-body">おもに<br>身体をつくる<br>もとになる</span></th>
+
+<th><span class="table-label label-health">おもに<br>身体の調子を<br>整える</span></th>
+
+    </tr>
+  </thead>
+
+
+    <tbody>
+      <tr>
+        <td>ごはん<br>パン<br>のり類など</td>
+        <td>炭水化物</td>
+        <td><div class="dot red"></div></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>油、魚</td>
+        <td>脂質</td>
+        <td><div class="dot red"></div></td>
+        <td><div class="dot yellow"></div></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>卵、肉</td>
+        <td>タンパク質</td>
+        <td><div class="dot red"></div></td>
+        <td><div class="dot yellow"></div></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>みかん</td>
+        <td>ビタミン</td>
+        <td></td>
+        <td></td>
+        <td><div class="dot green"></div></td>
+      </tr>
+
+      <tr>
+        <td>牛乳、わかめ</td>
+        <td>ミネラル<br>(無機質)</td>
+        <td></td>
+        <td><div class="dot yellow"></div></td>
+        <td><div class="dot green"></div></td>
+      </tr>
+    </tbody>
+
+  </table>
+<br>
+</div>
+<!-- まとめ -->
+<section class="summary-section">
+
+  <h3 class="section-title">まとめ</h3>
+
+  <p class="summary-text">
+    栄養は、我々の生命活動において必要不可欠な存在です。またそれぞれの栄養素を
+    バランスよく摂ることで健康を保っています。そのため毎日元気に過ごすためにも、
+    バランスの良い食事を心がけていきましょう！
+  </p>
+
+  <br>
+  <div class="summary-links">
+    <h4 class="links-title">バランス献立コラムのリンク</h4>
+
+    <p><a href="https://healthscienceshop.nestle.jp/blogs/isocal/knowledge-supplement-001-index" target="_blank">
+      https://healthscienceshop.nestle.jp/blogs/isocal/knowledge-supplement-001-index
+    </a></p>
+
+    <p><a href="https://www.ncvc.go.jp/hospital/pub/knowledge/diet/diet01/" target="_blank">
+      https://www.ncvc.go.jp/hospital/pub/knowledge/diet/diet01/
+    </a></p>
+
+    <p><a href="https://www.dietitian.or.jp/about/" target="_blank">
+      https://www.dietitian.or.jp/about/
+    </a></p>
+
+    <p><a href="https://images.meiji.co.jp/meiji-shokuiku/homework/study/nutrients/" target="_blank">
+      https://images.meiji.co.jp/meiji-shokuiku/homework/study/nutrients/
+    </a></p>
+  </div>
+
+</section>
+
+
+
+
+    </div>
+
+    
+  </main>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <a href="../../home/index.html" class="footer-btn">
+        <img src="../../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+      <a href="../../record/index.html" class="footer-btn">
+        <img src="../../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+
+      <a href="../../columns/000_ColumnHome/index.html" class="footer-btn active">
+        <img src="../../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+      
+      <a href="../../check/index.html" class="footer-btn">
+        <img src="../../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menu-toggle");
+    const sideMenu = document.getElementById("side-menu");
+
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  </script>
+
+</body>
+
+</html>

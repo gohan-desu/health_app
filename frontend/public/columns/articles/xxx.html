@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コラム</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <style>
+    /* ====== ページ固有のレイアウト（ズレない版） ====== */
+    .article-wrapper {
+      width: 100%;
+      max-width: 850px;
+      margin: 20px auto 120px; /* ← 自動で中央揃え */
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #000;
+      margin: 20px 0;
+      text-align: left;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 28px 0 16px;
+      padding-left: 10px;
+      border-left: 4px solid #D7DE51;
+    }
+
+    .article-box {
+      background: #F7F7F7;
+      padding: 24px;
+      border-radius: 14px;
+      margin: 24px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-box h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #000;
+    }
+
+    .article-box ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+    }
+
+    /* 横スクロール禁止（ズレを100％防ぐ） */
+    html,
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="app-header">
+    <button class="menu-btn" id="menu-toggle">☰</button>
+    <h1 class="page-title">コラム</h1>
+    <button class="icon-btn">
+      <img src="../../images/icon.png" alt="ユーザー" />
+    </button>
+  </header>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="side-menu">
+    <ul>
+      <li>
+      <a href="../../home/index.html">
+        <img src="../../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+      <li>
+        <a href="../../record/index.html">
+          <img src="../../images/pen.png" alt="記録" />
+          <span>記録</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../columns/index.html">
+          <img src="../../images/article.png" alt="コラム" />
+          <span>コラム</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../check/index.html">
+          <img src="../../images/human.png" alt="適量チェック" />
+          <span>適量チェック</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- コンテンツ -->
+  <main class="content">
+  </main>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <a href="../../home/index.html" class="footer-btn">
+        <img src="../../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+      <a href="../../columns/index.html" class="footer-btn active">
+        <img src="../../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+      <a href="../../check/index.html" class="footer-btn">
+        <img src="../../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+            <a href="../../record/index.html" class="footer-btn">
+        <img src="../../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menu-toggle");
+    const sideMenu = document.getElementById("side-menu");
+
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  </script>
+
+</body>
+
+</html>

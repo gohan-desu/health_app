@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ログイン | 食習慣改善アプリ</title>
+  <style>
+    :root {
+  --accent: #a9b92e;
+  --accent-dark: #8c9d26;
+  --text: #3f3535;
+  --title: #000;
+  --bg: #f9f9f9;
+  --card-bg: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --link: #a9b92e;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Noto Sans JP", sans-serif;
+
+  /* 💡 完全中央寄せにする */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100vh;
+  margin: 0;
+
+  /* スクロールバー分のズレを打ち消す */
+  overflow-x: hidden;
+}
+
+/* =============================
+   コンテナ全体
+   ============================= */
+.login-container {
+  text-align: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 1.5em;
+  margin: 0 auto; /* ✅ 明示的に中央へ */
+  box-sizing: border-box;
+}
+
+/* =============================
+   タイトル
+   ============================= */
+.app-title {
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+}
+
+.page-title {
+  font-size: 1rem;
+  margin-bottom: 1.5em;
+  color: var(--title);
+}
+
+/* =============================
+   ログインカード
+   ============================= */
+.login-card {
+  background: var(--card-bg);
+  box-shadow: 0 4px 8px var(--shadow);
+  border-radius: 12px;
+  padding: 2em 2em 2.5em;
+  margin: 0 auto 2em; /* ✅ 中央寄せ */
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* =============================
+   フォーム全体を中央に
+   ============================= */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* ✅ 中央寄せ */
+  width: 100%;
+}
+
+/* ラベルも中央揃え */
+form label {
+  width: 100%;
+  max-width: 280px;      /* ✅ 入力欄と同じ幅に統一 */
+  text-align: left;      /* ラベルの文字は左揃えのまま自然に */
+  font-weight: bold;
+  margin-bottom: 0.4em;
+}
+
+/* 入力欄 */
+input[type="text"],
+input[type="password"] {
+  display: block;
+  width: 100%;
+  max-width: 280px;      /* ✅ フォーム中央に固定幅で統一 */
+  padding: 0.8em;
+  border-radius: 6px;
+  border: none;
+  background: #f5f5f5;
+  margin-bottom: 1.4em;
+  font-size: 1rem;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+/* チェックボックス行も中央 */
+.remember {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  margin-bottom: 1.4em;
+  font-size: 0.9rem;
+}
+
+/* ボタンはそのまま中央でOK */
+.login-btn {
+  margin: 0 auto;
+}
+
+
+/* =============================
+   ログインボタン
+   ============================= */
+.login-btn {
+  display: block;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 0.7em 0;
+  font-weight: bold;
+  cursor: pointer;
+  width: 140px;
+  margin: 0 auto; /* ✅ ボタン中央寄せ */
+  transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+  background: var(--accent-dark);
+  transform: translateY(-1px);
+}
+
+/* =============================
+   パスワード忘れ
+   ============================= */
+.forgot {
+  text-align: center;
+  margin-top: 1em;
+}
+
+.forgot a {
+  color: var(--link);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot a:hover {
+  text-decoration: underline;
+}
+
+/* =============================
+   登録セクション
+   ============================= */
+/* =============================
+   下部リンク（新規登録案内）
+   ============================= */
+.register-section {
+  text-align: center;
+  margin-top: 1.8em;
+}
+
+.register-section p {
+  color: var(--text);
+  margin-bottom: 0.3em;
+  font-size: 0.95rem;
+}
+
+.register-link {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  border-bottom: 1.5px solid var(--accent);
+  padding-bottom: 2px;
+  transition: all 0.2s ease;
+}
+
+.register-link:hover {
+  opacity: 0.7;
+}
+
+/* =============================
+   スマホ対応
+   ============================= */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 1.8em 1.4em 2em;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <main class="login-container">
+    <h1 class="app-title">食習慣改善アプリ</h1>
+    <h2 class="page-title">ログイン画面</h2>
+
+    <section class="login-card">
+      <form id="loginForm">
+        <label for="username">ユーザー名</label>
+        <input type="text" id="username" placeholder="ユーザー名を入力" required>
+
+        <label for="password">パスワード</label>
+        <input type="password" id="password" placeholder="•••••••" required>
+
+        <div class="remember">
+          <input type="checkbox" id="remember">
+          <label for="remember">ログイン状態を保存する</label>
+        </div>
+
+        <button type="submit" class="login-btn">ログイン</button>
+
+      </form>
+    </section>
+
+    <section class="register-section">
+  <p>アカウントをお持ちでない方</p>
+  <a href="/register/register.html" class="register-link">アカウント登録する</a>
+</section>
+
+  </main>
+
+  <script src="/login/login.js"></script>
+</body>
+</html>

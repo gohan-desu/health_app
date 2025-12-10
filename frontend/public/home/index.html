@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ホーム</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../record/calendar.css" />
+
+  <style>
+    /* ===== 今日の一言カード ===== */
+.motivation-card {
+  background: #ffffff;
+  padding: 18px 20px;
+  margin: 20px auto 30px;
+  width: 88%;
+  max-width: 480px;
+  border-radius: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  font-size: 1rem;
+  text-align: center;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* ===== カレンダーを中央揃え ===== */
+.home-calendar {
+  margin: 0 auto 30px;
+}
+
+/* ===== ホーム画面用：カレンダー縮小版 ===== */
+.home-calendar .calendar-container,
+.home-calendar .calendar,
+.home-calendar .calendar-header {
+  max-width: 300px !important; /* ← 幅を小さく */
+  margin: 0 auto;
+}
+
+.home-calendar .calendar-days div,
+.home-calendar .date-cell {
+  font-size: 0.7rem !important;  /* ← 文字小さめ */
+  padding: 2px;
+}
+
+.home-calendar .date-cell {
+  aspect-ratio: 1 / 1;
+  border-radius: 6px;
+}
+
+/* ボタン（＜ ＞）も小型化 */
+.home-calendar .calendar-nav button {
+  font-size: 1rem !important;
+}
+
+/* 年・月の文字サイズも縮小 */
+.home-calendar #year {
+  font-size: 0.8rem !important;
+}
+
+.home-calendar #month {
+  font-size: 1.2rem !important;
+}
+
+/* ===== コラムランダムボタン ===== */
+.btn {
+  display: block;
+  width: 70%;
+  max-width: 360px;
+  margin: 20px auto;
+  padding: 14px 0;
+  background: #d9e76c;
+  border-radius: 16px;
+  text-align: center;
+  font-size: 1rem;
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+.btn:hover {
+  background: #e8f17a;
+  transform: translateY(-2px);
+  transition: 0.2s;
+}
+  </style>
+</head>
+<body>
+  <!-- ヘッダー -->
+<header class="app-header">
+  <button class="menu-btn" id="menu-toggle">☰</button>
+  <h1 class="page-title">ホーム</h1>
+  <button class="icon-btn">
+    <img src="../images/icon.png" alt="ユーザー" />
+  </button>
+</header>
+
+<!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../home/index.html">
+        <img src="../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../record/index.html">
+        <img src="../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../columns/000_ColumnHome/index.html">
+        <img src="../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../check/index.html">
+        <img src="../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+  <!-- コンテンツ領域 -->
+  <main class="content">
+    <!-- ここに記事やコラムを配置 -->
+      <!-- 🌱 今日の一言（ランダム） -->
+  <div id="motivation" class="motivation-card"></div>
+
+  <!-- 📅 カレンダー部分（記録画面と共通のコード使用） -->
+
+  <section class="calendar-container">
+    <div class="calendar-header">
+      <div class="calendar-nav">
+        <button id="prev-month" aria-label="前の月">＜</button>
+
+        <div class="calendar-title">
+          <div id="year" class="year-text clickable">2025 ▼</div>
+          <div id="month" class="month-text clickable">7月 ▼</div>
+
+          <!-- 年/月 選択リスト -->
+          <div id="year-list" class="select-list hidden"></div>
+          <div id="month-list" class="select-list hidden"></div>
+        </div>
+
+        <button id="next-month" aria-label="次の月">＞</button>
+      </div>
+    </div>
+
+    <div class="calendar">
+      <div class="calendar-days">
+        <div class="day-label">Sun</div>
+        <div class="day-label">Mon</div>
+        <div class="day-label">Tue</div>
+        <div class="day-label">Wed</div>
+        <div class="day-label">Thu</div>
+        <div class="day-label">Fri</div>
+        <div class="day-label">Sat</div>
+      </div>
+
+      <div class="calendar-grid" id="calendar-grid"></div>
+    </div>
+
+    <!-- ✅ チェックリストモーダル -->
+  <div id="checklist-modal" class="modal hidden">
+    <div class="modal-content">
+         <!-- ✖️ ここを追加！ -->
+    <button class="close-btn" id="close-checklist-modal">×</button>
+
+      <h2 id="selected-date-title">日付の記録</h2>
+      <form id="checklist-form"></form>
+    </div>
+  </div>
+
+  </section>
+
+  <!-- 📰 コラムランダムボタン -->
+  <a href="#" id="random-column" class="btn">コラム記事（ランダム表示）</a>
+  <a href="../vegemikuji/index.html" class="btn">ベジみくじ</a>
+
+  </main>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      
+      <a href="../home/index.html" class="footer-btn active">
+        <img src="../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+      <a href="../record/index.html" class="footer-btn">
+        <img src="../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+
+      <a href="../columns/000_ColumnHome/index.html" class="footer-btn">
+        <img src="../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+
+      <a href="../check/index.html" class="footer-btn">
+        <img src="../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+    </nav>
+  </footer>
+
+  <script>
+  const menuBtn = document.getElementById("menu-toggle");
+  const sideMenu = document.getElementById("side-menu");
+
+  // 背景のオーバーレイを追加
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
+
+  // 開閉処理
+  menuBtn.addEventListener("click", () => {
+    sideMenu.classList.toggle("open");
+    overlay.classList.toggle("show");
+  });
+
+  // 背景クリックで閉じる
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+
+  /* ===== 今日の一言ランダム ===== */
+const messages = [
+  "今日もゆっくり積み上げていきましょう。",
+  "無理のない範囲で、今日も一歩。がんばろう。",
+  "昨日より少しだけ前へ。今日もいい日にしよう。",
+  "できることから、淡々と。今日もよろしくね。",
+  "焦らず、いつも通りで大丈夫。今日もがんばろう。"
+];
+
+document.getElementById("motivation").textContent =
+  messages[Math.floor(Math.random() * messages.length)];
+
+/* ===== カレンダー（記録画面のコードを再利用） ===== */
+/* ※ generateCalendar() などの関数は共通JSから読み込んでもOK */
+
+</script>
+
+<script src="../record/calendar.js"></script>
+
+</body>
+</html>

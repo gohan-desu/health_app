@@ -1,0 +1,209 @@
+
+:root {
+  --accent: #a9b92e;       /* メイン：オリーブグリーン */
+  --accent-dark: #8c9d26;  /* ホバー・濃色 */
+  --text: #3f3535;         /* メインテキスト：ダークブラウン */
+  --title: #000000;        /* 見出しなどに使用する黒 */
+  --bg: #ffffff;           /* 背景：オフホワイト */
+  --card-bg: #ffffff;      /* コンテンツカード背景 */
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* リセット */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== ヘッダー ===== */
+.app-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  border-bottom: none;
+  z-index: 100;
+  background: var(--card-bg);
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.menu-btn,
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.icon-btn img {
+  width: 35px;
+  height: 35px;
+}
+
+.page-title {
+  font-size: 18px;
+  color: #222;
+  font-weight: 600;
+}
+
+
+/* ===== コンテンツ ===== */
+.content {
+  flex: 1;
+  padding-top: 56px;
+  padding-bottom: 64px;
+}
+
+/* ===== フッター ===== */
+.app-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border-top: 2px solid #c6d300;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 64px;
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: #222;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 12px; /* ← 角を少し丸くしてタップ感UP */
+  transition: background-color 0.25s ease;
+}
+
+.footer-btn img {
+  width: 26px;
+  height: 26px;
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+/* アクティブ時（現在のページ） */
+.footer-btn.active {
+  background-color: rgba(0, 0, 0, 0.03); /* ← ほんのり明るめ（透け感多め） */
+}
+
+/* ホバー時 */
+.footer-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05); /* ← 少し濃い目で動きがわかる */
+}
+
+
+/* アクティブ時の文字・アイコン強調 */
+.footer-btn.active span {
+  color: #c6d300; /* イエローグリーン */
+  font-weight: 600;
+}
+
+/* ===== サイドメニュー ===== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px; /* ← 初期は画面外 */
+  width: 260px;
+  height: 100vh;
+  background-color: #fff;
+  box-shadow: 2px 0 6px rgba(0, 0, 0, 0.15);
+  transition: left 0.3s ease;
+  z-index: 300;
+  padding-top: 70px; /* ヘッダーぶん下げる */
+}
+
+/* 開いた状態 */
+.side-menu.open {
+  left: 0;
+}
+
+/* ===== メニューリスト ===== */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.side-menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* アイコンと文字の間 */
+  padding: 16px 24px;
+  text-decoration: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.25s ease;
+}
+
+/* hover時 */
+.side-menu a:hover {
+  background-color: rgba(198, 211, 0, 0.15); /* イエローグリーン系透け色 */
+}
+
+/* アイコン画像 */
+.side-menu img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.9;
+}
+
+/* ===== 背景の半透明オーバーレイ ===== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.2);
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 250;
+}
+
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-between;  /* 均等に配置 */
+  max-width: 600px; /* ← 好きな幅（スマホUIに最適） */
+  margin: 0 auto;   /* ← 画面中央に固定 */
+  width: 100%;
+}

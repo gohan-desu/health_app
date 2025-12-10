@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>コラム</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+</head>
+
+<style>
+ .content {
+  flex: 1;
+  padding-top: 56px;
+  
+  overflow-y: auto;
+  color: #2A621E; 
+  font-size: 1.4em;
+  border-bottom: 3px solid #d9ead3; 
+ 
+  margin-top: 10px;
+  /* 👇 ここに text-align: center; を追加します！ 👇 */
+  text-align: center;
+  padding-left: 210px;
+  padding-right: 210px;
+
+  
+}
+
+.content h2{
+    text-align: center;
+    border-left: 5px solid #d9e76c; /* 左の緑の線 */
+    /* ブロック要素の幅をコンテンツの幅に合わせ、中央に配置 */
+    display: inline-block;
+    /* 線とテキストの間に少しスペースを空ける */
+    padding-left: 10px;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+}
+.content p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #222;
+    text-align: center;
+}
+
+/* ▼ 1つ目のpタグのみに適用するスタイル：黄緑（#A9D18E） ▼ */
+.content p:first-of-type {
+    color: #5C9956;
+    font-weight: bold; /* 目立たせるために太字にするのもおすすめです */
+    font-size: 1.1em;
+}
+
+/* ===== コラムボタン共通 ===== */
+.column-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d9e76c; /* イエローグリーン */
+  border-radius: 16px;
+  padding: 16px 20px;
+  text-decoration: none;
+  color: #222;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+}
+
+/* ===== 大ボタン ===== */
+.column-btn.large {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 20px;
+  padding: 24px 20px;
+ 
+  
+}
+</style>
+<body>
+ <!-- ヘッダー -->
+<header class="app-header">
+  <button class="menu-btn" id="menu-toggle">☰</button>
+  <h1 class="page-title">コラム</h1>
+  <button class="icon-btn">
+    <img src="../../images/icon.png" alt="ユーザー" />
+  </button>
+</header>
+
+
+<!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../home/index.html">
+        <img src="../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../record/index.html">
+        <img src="../../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../columns/000_ColumnHome/index.html">
+        <img src="../../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../check/index.html">
+        <img src="../../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+<main class="content">
+  <!-- ここにコラムの内容を書く -->
+  <h2>一日に必要なエネルギーと食事量</h2>
+  <p>まず自分のデータを知ろう！</p>
+  <p>食事バランスガイド」に基づき、１日の適量について解説しています。<br>
+     １日に必要なエネルギーを把握し、「何を」「どのように」食事をすればいいのか理解しましょう。</p>
+   
+  <a href="../../columns/articles/003-1_DailyEnergy.html" class="column-btn large">
+    <div class="column-text">
+      <h3>一日に必要なエネルギー</h3>
+    </div>
+    
+  </a>
+
+  <a href="../../columns/articles/003-2_DailySV.html" class="column-btn large">
+    <div class="column-text">
+      <h4>一日に必要な食事量「つ（SV）」</h4>
+    </div>
+    
+  </a>
+  
+
+</main>
+
+
+
+
+<!-- フッター -->
+<footer class="app-footer">
+  <nav class="footer-nav">
+    <a href="../../home/index.html" class="footer-btn">
+        <img src="../../images/home.png"><span>ホーム</span>
+      </a>
+      
+    <a href="../../record/index.html" class="footer-btn">
+      <img src="../../images/pen.png" alt="記録" />
+      <span>記録</span>
+    </a>
+
+    <a href="../../columns/000_ColumnHome/index.html" class="footer-btn active">
+      <img src="../../images/article.png" alt="コラム" />
+      <span>コラム</span>
+    </a>
+
+    <a href="../../check/index.html" class="footer-btn">
+      <img src="../../images/human.png" alt="適量チェック" />
+      <span>適量チェック</span>
+    </a>
+
+  </nav>
+</footer>
+
+
+<script>
+    const menuBtn = document.getElementById("menu-toggle");
+const sideMenu = document.getElementById("side-menu");
+
+// 背景のオーバーレイを追加
+const overlay = document.createElement("div");
+overlay.classList.add("overlay");
+document.body.appendChild(overlay);
+
+// 開閉処理
+menuBtn.addEventListener("click", () => {
+  sideMenu.classList.toggle("open");
+  overlay.classList.toggle("show");
+});
+
+// 背景クリックで閉じる
+overlay.addEventListener("click", () => {
+  sideMenu.classList.remove("open");
+  overlay.classList.remove("show");
+});
+</script>
+</body>
+</html>

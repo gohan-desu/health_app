@@ -1,0 +1,453 @@
+  /* ======================================
+   🎨 カラーテーマ変数
+====================================== */
+:root {
+  --accent: #a9b92e;
+  --accent-dark: #8c9d26;
+  --text: #3f3535;
+  --bg: #f9f9f9;
+  --card-bg: #fff;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+/* ======================================
+   🪴 全体設定
+====================================== */
+body {
+  background: var(--bg);
+  font-family: "Noto Sans JP", sans-serif;
+  margin: 0;
+  color: var(--text);
+}
+
+/* ======================================
+   🗓️ カレンダー全体レイアウト
+====================================== */
+.calendar-container {
+  max-width: 420px;
+  margin: 2em auto;
+  background: var(--card-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px var(--shadow);
+  padding: 1.5em;
+  text-align: center;
+}
+
+/* --- 月・年ナビ --- */
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+.calendar-title {
+  position: relative;
+  text-align: center;
+}
+.year-text {
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: bold;
+  cursor: pointer;
+}
+.month-text {
+  font-size: 1.6rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* --- 月・年リスト --- */
+.select-list {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card-bg);
+  box-shadow: 0 2px 8px var(--shadow);
+  border-radius: 8px;
+  padding: 0.5em 0;
+  width: 140px;
+  margin-top: 0.4em;
+  z-index: 10;
+}
+.select-list div {
+  padding: 0.5em 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.select-list div:hover {
+  background: var(--accent);
+  color: #fff;
+}
+.hidden {
+  display: none;
+}
+
+/* --- ナビボタン --- */
+.calendar-nav button {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.1s ease;
+}
+.calendar-nav button:hover {
+  color: var(--accent-dark);
+  transform: scale(1.1);
+}
+
+/* --- 曜日ラベル --- */
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 0.5em;
+}
+.day-label {
+  padding: 0.4em 0;
+}
+
+/* --- 日付セル --- */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4em;
+}
+.date-cell {
+  aspect-ratio: 1 / 1;
+  background: #efefef;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.date-cell:hover {
+  background: #e4e4e4;
+}
+
+.date-cell.empty {
+  background: transparent;
+  cursor: default;
+}
+
+/* --- 凡例 --- */
+.legend {
+  margin-top: 1em;
+  font-size: 0.9rem;
+}
+
+/* ======================================
+   🎯 現在の目標表示
+====================================== */
+.goal-display {
+  background: #f7f8f2;
+  border-left: 5px solid var(--accent);
+  margin: 1em auto 1.5em;
+  padding: 0.8em 1em;
+  border-radius: 8px;
+  max-width: 420px;
+  box-shadow: 0 2px 6px var(--shadow);
+}
+.edit-goal-btn {
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.edit-goal-btn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ======================================
+   🪞 モーダル共通
+====================================== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.35);
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.modal.show {
+  display: flex;
+  opacity: 1;
+  animation: fadeIn 0.4s ease forwards;
+}
+.modal.hide {
+  animation: fadeOut 0.3s ease forwards;
+}
+.modal-content {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+}
+
+/* --- アニメーション --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(10px); }
+}
+
+/* ======================================
+   📋 フォーム系
+====================================== */
+.question {
+  margin-bottom: 16px;
+  text-align: left;
+}
+select, input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+input[type="text"] {
+  margin-top: 0.4em;
+}
+
+/* --- 難易度 --- */
+.difficulty-group {
+  margin-top: 0.5em;
+  font-size: 0.95rem;
+}
+.difficulty-group label {
+  cursor: pointer;
+}
+.difficulty-group input {
+  margin-right: 0.4em;
+}
+
+/* --- ボタン --- */
+.btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn:hover {
+  background: var(--accent-dark);
+  transform: scale(1.03);
+}
+
+/* ======================================
+   ✅ チェックリストモーダル
+====================================== */
+#checklist-modal .modal-content {
+  text-align: left;
+}
+#checklist-modal label {
+  display: block;
+  margin: 0.5em 0;
+  font-size: 1rem;
+}
+
+/* =====================
+ 🍀 プリセット目標カード（ボタン間の余白を圧縮）
+===================== */
+.preset-goals {
+  display: flex;
+  flex-direction: column;
+  gap: 3px; /* ← ボタン同士の間を狭くする（8px → 3px） */
+  margin: 6px 0 12px; /* ← 全体の上下余白も軽く */
+}
+
+/* ボタンデザイン（中身の余白はそのまま） */
+.preset-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: #fff;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.preset-btn:hover {
+  background: #f6f8f6;
+  transform: translateY(-1px);
+}
+
+.preset-btn.active {
+  border-color: #7dc79b;
+  background: linear-gradient(145deg, #e9f7ef, #f6fff8);
+  box-shadow: 0 0 0 2px rgba(125, 199, 155, 0.2);
+}
+
+.preset-btn[data-goal*="野菜"]::before { content: "🥦"; }
+.preset-btn[data-goal*="間食"]::before { content: "🍫"; }
+.preset-btn[data-goal*="水"]::before { content: "💧"; }
+.preset-btn[data-goal*="バランス"]::before { content: "🥗"; }
+
+/* =====================
+ ✨ 区切り線付き「または」
+===================== */
+.or-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin: 10px 0 14px;
+  position: relative;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.or-divider::before,
+.or-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ccc;
+  margin: 0 10px;
+  opacity: 0.6;
+}
+
+.or-divider::before {
+  margin-right: 12px;
+}
+.or-divider::after {
+  margin-left: 12px;
+}
+
+/* =====================
+ 🔘 丸い「×」閉じるボタン
+===================== */
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1.5px solid #ffffff;
+  color: #555;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+
+.close-btn:hover {
+  background: #fff;
+  color: #333;
+  border-color: var(--accent);
+  transform: scale(1.08);
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* モーダル本体に必要 */
+.modal-content {
+  position: relative;
+}
+
+/* 今日の日付を強調表示 */
+.date-cell.today {
+  background: #ffffff;        /* 優しい緑 */
+  border: 2px solid #7ac142;  /* アクセントカラー */
+  font-weight: bold;
+  color: #2e6b28;
+  border-radius: 6px;
+}
+
+/* 記録済みの日付（中央に大きめ●） */
+.date-cell.recorded {
+  position: relative;
+  color: #fff; /* 数字を白にすると映える */
+  font-weight: bold;
+   background: transparent !important; /* ← 背景を透明にするのが重要 */
+  z-index: 1;
+}
+
+.date-cell.recorded::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 70%;
+  background: #a5b76b; /* オリーブグリーン */
+  border-radius: 50%;
+  z-index: -1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* 今日の日付：ホバーでふわっと */
+.date-cell.today:hover {
+  transform: scale(1.08);
+  background: #e5f7d9;
+  border-color: #8fd866;
+  transition: all 0.25s ease;
+}
+
+/* 記録済み：ホバーで丸が少し拡大＆明るく */
+.date-cell.recorded:hover::before {
+  /* transformは同じtranslateを維持しつつ、scaleだけ上乗せする！ */
+  transform: translate(-50%, -50%) scale(1.1);
+  background: #b8c785;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* 🟩 メモありの日に右上につく丸角三角マーク */
+.date-cell.has-memo {
+  position: relative;
+}
+
+.date-cell.has-memo::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+
+  /* 三角形（右上に向けた形） */
+  border-right: 14px solid var(--accent);
+  border-bottom: 14px solid transparent;
+
+  /* 角を丸くする */
+  border-top-right-radius: 6px;
+}

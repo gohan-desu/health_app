@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>バランスが悪い食事が続くと</title>
+  <link rel="stylesheet" href="../../css/style.css" />
+
+  <style>
+    /* ====== ページ固有レイアウト ====== */
+    .article-wrapper {
+      width: 100%;
+      max-width: 850px;
+      margin: 20px auto 120px;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    .article-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #000;
+      margin: 20px 0;
+      border-left: 4px solid #D7DE51;
+      padding-left: 10px;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 28px 0 16px;
+      color: #D7DE51;
+    }
+
+    .article-box {
+      background: #F7F7F7;
+      padding: 24px;
+      border-radius: 14px;
+      margin: 24px 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .article-box h4 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+  color: #4A3F3F;
+}
+
+
+    .article-box ul {
+      padding-left: 1.2rem;
+      line-height: 1.7;
+    }
+
+/* 外枠 */
+.nutri-wrapper {
+  border: 5px solid #A7BA4F;
+  border-radius: 30px;
+  padding: 20px;
+  background: #fff;
+  margin-top: 20px;
+}
+
+/* 表全体 */
+.nutri-table-new {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  text-align: center;
+}
+
+/* ヘッダー */
+.nutri-table-new thead th {
+  background: #ffffff;
+  padding: 12px 4px;
+  font-weight: 700;
+  font-size: 0.93rem;
+  line-height: 1.4;
+  color: #333;
+}
+
+/* 列幅 */
+.col-food { width: 120px; text-align: left; padding-left: 6px; }
+.col-nutri { width: 120px; text-align: left; padding-left: 6px; }
+
+/* 本文セル */
+.nutri-table-new tbody td {
+  padding: 18px 6px;
+  border-bottom: 1px dashed #C8C8A8;
+  vertical-align: middle;
+}
+
+/* 最後の線消す */
+.nutri-table-new tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* フード列は左揃え */
+.nutri-table-new tbody td:first-child {
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 栄養素名列も左揃え */
+.nutri-table-new tbody td:nth-child(2) {
+  text-align: left;
+  font-weight: 700;
+  color: #333;
+}
+/* ヘッダー共通 */
+.nutri-table-new thead th {
+  padding: 12px 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  color: #333;
+  text-align: center;
+}
+
+/* 小さな丸（ヘッダー用） */
+.head-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 auto 4px;
+}
+
+.head-dot.red { background: #F25D4D; }
+.head-dot.yellow { background: #F4D44B; }
+.head-dot.green { background: #8BC776; }
+
+/* 各列に色をつける */
+.head-energy {
+  background: rgba(242, 93, 77, 0.18);    /* 赤系の柔らかい背景 */
+}
+
+.head-build {
+  background: rgba(244, 212, 75, 0.25);  /* 黄色系の柔らかい背景 */
+}
+
+.head-condition {
+  background: rgba(139, 199, 118, 0.22); /* 緑系の柔らかい背景 */
+}
+
+/* 丸アイコン */
+.dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.red { background: #F25D4D; }
+.yellow { background: #F4D44B; }
+.green { background: #8BC776; }
+
+
+/* ===== まとめ ===== */
+.summary-section {
+  margin-top: 40px;
+  padding-top: 10px;
+  border-top: 3px dotted #D7DE51;
+}
+
+.summary-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.summary-text {
+  line-height: 1.9;
+  margin-bottom: 32px;
+}
+
+/* ===== リンク部分 ===== */
+.summary-links {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.links-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 14px;
+  color: #333;
+}
+
+.summary-links p {
+  margin: 6px 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.summary-links a {
+  text-decoration: none;
+  color: #333;
+  word-break: break-all;
+}
+
+.summary-links a:hover {
+  text-decoration: underline;
+}
+
+/* 全体の文章の行間を広げる */
+body, p, li {
+  line-height: 1.9;
+}
+
+/* セクション本文を少しゆったり */
+.article-wrapper p {
+  margin-bottom: 1.2em;
+}
+
+/* 見出しとの余白を調整 */
+.section-title {
+  margin-top: 32px;
+  margin-bottom: 18px;
+}
+
+/* ================================
+   見出しのデザイン（画像そっくり）
+=================================== */
+
+/* h2（ページタイトル） */
+.article-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 18px;
+  letter-spacing: 0.5px;
+  padding-left: 12px;
+  border-left: 6px solid #A3C04A; /* 縦ライン */
+  line-height: 1.4;
+}
+
+/* h3 セクションタイトル */
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7A9E28; /* 黄緑 */
+  margin: 32px 0 14px;
+
+}
+
+/* ================================
+   本文
+=================================== */
+.content p,
+.article-wrapper p {
+  color: #333;
+  line-height: 2.0;      /* ゆったり行間 */
+  margin: 0 0 26px;      /* 段落間の余白 */
+  font-size: 0.98rem;
+}
+
+/* ================================
+   セクションの区切り（ドット線）
+=================================== */
+.section-divider {
+  border-top: 2px dotted #D7DE51;
+  margin: 40px 0;
+}
+
+
+/* ===== ホーム画面のカードと統一 ===== */
+.soft-table-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  margin-top: 28px;
+}
+
+.soft-table-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #444;
+}
+
+/* ===== 行（座布団ぽい背景） ===== */
+.soft-row {
+  background: #F4F4F4;
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 95px 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+/* ===== 栄養素ラベル（丸 pill UI） ===== */
+.soft-label {
+  background: #D7DE51;
+  padding: 10px 14px;
+  border-radius: 14px;
+  color: #444;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.9rem;
+  align-self: start;
+}
+
+/* ===== 内容セル ===== */
+.soft-cell {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.soft-cell strong {
+  color: #627100; /* 優しい緑（アクセント） */
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width: 600px) {
+  .soft-row {
+    grid-template-columns: 1fr;
+  }
+
+  .soft-label {
+    width: 120px;
+    margin: 0 auto;
+  }
+}
+
+
+/* =====================
+   食物繊維カード（新）
+===================== */
+.fiber-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.fiber-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #444;
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.fiber-row {
+  background: #F4F4F4;
+  border-radius: 18px;
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.fiber-header {
+  background: #D7DE51;
+  color: #444;
+  font-weight: 700;
+  border-radius: 14px;
+  
+  padding: 12px;
+  font-size: 0.92rem;
+  text-align: center;
+
+  display: flex;
+  align-items: center;   /* ← 上下中央 */
+  justify-content: center; /* ← 左右中央 */
+
+  min-height: 50px;  /* カード高さを安定させる（お好みで調整可） */
+}
+
+
+.fiber-list {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* ===== スマホ対応 ===== */
+@media (max-width: 600px) {
+  .fiber-row {
+    grid-template-columns: 1fr;
+    padding: 14px;
+  }
+  
+  .fiber-header {
+    margin: 0 auto;
+    width: 160px;
+  }
+}
+
+/* ===========================
+   ミネラル表カード
+=========================== */
+
+.mineral-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.mineral-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 22px;
+}
+
+.mineral-row {
+  background: #F4F4F4;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+/* 左のラベル（カルシウム / 鉄） */
+.mineral-label {
+  background: #D7DE51;
+  color: #444;
+  font-weight: 700;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 150px;
+  height: 100%;  /* 右側の高さに合わせる */
+  padding: 0 10px;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+/* 右側のコンテンツ部分 */
+.mineral-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* 白い小カード（欠乏症・過剰症） */
+.mineral-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.mineral-item strong {
+  color: #627100; /* 優しい緑でアクセント */
+}
+
+/* ==============================
+   スマホ対応
+============================== */
+@media (max-width: 600px) {
+  .mineral-row {
+    flex-direction: column;
+  }
+
+  .mineral-label {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+/* ===========================
+   ビタミン カード全体
+=========================== */
+.vitamin-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  margin-top: 28px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.vitamin-title {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #444;
+  margin-bottom: 22px;
+}
+
+/* ===========================
+   1つの行（ビタミンAなど）
+=========================== */
+.vitamin-row {
+  background: #F4F4F4;
+  border-radius: 18px;
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+/* 左のビタミン名カード */
+.vitamin-label {
+  background: #D7DE51;
+  color: #444;
+  font-weight: 700;
+  border-radius: 14px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 150px;
+  height: 100%; /* 右側と高さを揃える */
+  padding: 0 12px;
+  text-align: center;
+  font-size: 0.92rem;
+}
+
+/* 右側のカード群（欠乏症・過剰症） */
+.vitamin-content {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+/* 小カード（白） */
+.vitamin-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 0.92rem;
+  color: #444;
+  line-height: 1.7;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.vitamin-item strong {
+  color: #627100; /* 優しい緑のアクセント */
+}
+
+.maru-key {
+  color: #A7BA4F; /* オリーブグリーン */
+  font-weight: 600; /* 少し太くすると読みやすい */
+}
+
+/* ===========================
+   スマホ対応
+=========================== */
+@media (max-width: 600px) {
+  .vitamin-row {
+    flex-direction: column;
+  }
+
+  .vitamin-label {
+    width: 100%;
+    padding: 12px;
+  }
+}
+
+
+/* ========== スマホ対応（幅 600px 以下） ========== */
+@media (max-width: 600px) {
+
+  .article-wrapper {
+    padding: 0 10px;
+    margin-bottom: 80px;
+  }
+
+  .article-title {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+  /* ---- 栄養素表 ---- */
+  .nutri-wrapper {
+    padding: 12px;
+    border-width: 3px;
+  }
+
+  .nutri-table-new {
+    font-size: 0.8rem;
+  }
+
+  /* 列の幅を比率で調整 */
+  .col-food { width: 28%; padding-left: 2px !important; }
+  .col-nutri { width: 22%; padding-left: 2px !important; }
+  .col-energy,
+  .col-build,
+  .col-condition {
+    width: 16%;
+  }
+
+  /* ヘッダーの文字を小さく・行間調整 */
+  .nutri-table-new thead th {
+    font-size: 0.7rem;
+    line-height: 1.2;
+    padding: 8px 2px;
+  }
+
+  /* 丸アイコン小さめに */
+  .dot {
+    width: 24px;
+    height: 24px;
+  }
+
+  .head-dot {
+    width: 14px;
+    height: 14px;
+    margin-bottom: 2px;
+  }
+
+  /* 表の行の高さをスマホ用に詰める */
+  .nutri-table-new tbody td {
+    padding: 12px 4px;
+  }
+
+  /* 表の横スクロール防止 */
+  .nutri-wrapper {
+    overflow-x: auto;
+  }
+
+  /* まとめ部分 */
+  .summary-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  .links-title {
+    font-size: 0.95rem;
+  }
+
+  .summary-links p {
+    font-size: 0.8rem;
+  }
+}
+
+
+    /* 横スクロール禁止 */
+    html, body {
+      overflow-x: hidden;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- ヘッダー -->
+  <header class="app-header">
+    <button class="menu-btn" id="menu-toggle">☰</button>
+    <h1 class="page-title">コラム</h1>
+    <button class="icon-btn">
+      <img src="../../images/icon.png" alt="ユーザー" />
+    </button>
+  </header>
+
+  <!-- サイドメニュー -->
+  <nav class="side-menu" id="side-menu">
+    <ul>
+      <li>
+      <a href="../../home/index.html">
+        <img src="../../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+      <li>
+        <a href="../../record/index.html">
+          <img src="../../images/pen.png" alt="記録" />
+          <span>記録</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../columns/000_ColumnHome/index.html">
+          <img src="../../images/article.png" alt="コラム" />
+          <span>コラム</span>
+        </a>
+      </li>
+      <li>
+        <a href="../../check/index.html">
+          <img src="../../images/human.png" alt="適量チェック" />
+          <span>適量チェック</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- コンテンツ -->
+  <main class="content">
+    <div class="article-wrapper">
+
+      <!-- タイトル -->
+      <h2 class="article-title">バランスが悪い食事が続くと</h2>
+
+      <!-- -->
+      <section>
+
+        <p>
+          　身体の健康はたくさんの栄養が互いに作用しながら保たれています。どれかが極端に欠けたり増したりすると、体が疲れやすくなったり、イライラしやすくなったりします。肥満や便秘、肌荒れなどの症状が出やすくなり、また免疫力が低下し、病気にかかりやすくなります。このようにバランスの悪い食事は心身共に悪影響を及ぼします。
+        </p>
+
+        <p>
+          　栄養素が足りなかったり、多すぎたりした場合、どのような症状を引き起こすのか見ていきましょう。
+        </p>
+      </section>
+
+      <div class="section-divider"></div>
+
+
+        <h3 class="section-title">炭水化物、脂質、たんぱく質</h3>
+
+        <div class="soft-table-card">
+
+  <h3 class="soft-table-title">栄養素の不足・過剰による影響</h3>
+
+  <div class="soft-row">
+    <div class="soft-label">炭水化物</div>
+    <div class="soft-cell">
+      <strong>欠乏症：</strong><br>
+        疲労感、脱力感<br>
+        長期化すると低体重<br>
+        ひどい場合意識を失う
+
+    </div>
+    <div class="soft-cell">
+      <strong>過剰症：</strong><br>
+      余分なエネルギーは中性脂肪になって蓄積され、
+      過剰になると肥満
+    </div>
+  </div>
+
+  <div class="soft-row">
+    <div class="soft-label">脂質</div>
+    <div class="soft-cell">
+      <strong>欠乏症：</strong><br>
+      脂溶性ビタミンの吸収が悪くなる<br>
+肌荒れ、便秘、月経不順
+    </div>
+    <div class="soft-cell">
+      <strong>過剰症：</strong><br>
+      肥満、動脈硬化、血管疾患などの生活習慣病
+    </div>
+  </div>
+
+  <div class="soft-row">
+    <div class="soft-label">たんぱく質</div>
+    <div class="soft-cell">
+      <strong>欠乏症：</strong><br>
+      筋肉量、基礎代謝、免疫力の低下<br>
+脱毛、爪の割れ、冷え
+    </div>
+    <div class="soft-cell">
+      <strong>過剰症：</strong><br>
+      腸内環境の乱れや尿路結石症の原因<br>
+尿流に排泄され、腎臓に負荷
+    </div>
+  </div>
+
+</div>
+<br>
+
+
+    <section>
+
+        <p>
+          　<span class="maru-key">炭水化物</span>が不足すると、エネルギー不足により、疲労感や脱力感を引き起こします。また心のバランスを整える役割を持つセロトニンの分泌が減ることで、イライラや気分の落ち込みに繋がりやすくなります。過剰に摂取すると、余ったエネルギーが中性脂肪に変換され、脂肪として蓄積されます。頻繁に炭水化物を摂りすぎると、肥満や生活習慣病のリスクが高まります。
+        </p>
+        <br>
+        <p>
+          　<span class="maru-key">脂質</span>が不足すると、炭水化物と同じくエネルギー不足になり、疲労感や脱力感、イライラやストレスを感じやすくなります。また体内にある細胞膜の材料が足りなくなり、細胞膜の機能が低下し、肌荒れなどを引き起こします。加えて脂溶性ビタミンが吸収されにくくなり、ビタミン欠乏になるリスクもあります。過剰に摂取すると、余ったエネルギーが中性脂肪に変換され、脂肪として蓄積され、肥満や生活習慣病のリスクが高まります。
+        </p>
+        <br>
+        <p>
+            　<span class="maru-key">たんぱく質</span>が不足すると、筋肉量や基礎代謝、免疫機能の低下を引き起こします。たんぱく質は筋肉など身体の主成分であるため、不足してしまうと身体に大きな栄養を及ぼします。また爪や髪の毛もたんぱく質のケラチンが主成分となるため、爪の割れ・欠けや脱毛の原因となります。過剰に摂取すると、腸内環境の乱れや尿路結石症の原因となることがあります。また体内に老廃物が大量に発生し腎臓に負担がかかってしまいます。
+        </p>
+        <br>
+        <p>
+            　<span class="maru-key">炭水化物、脂質、たんぱく質</span>は、人間の体をつくるうえで欠かせない3大栄養素です。適量を守ってしっかりと摂取していきましょう。
+        </p>
+      </section>
+
+      <h3 class="section-title">食物繊維</h3>
+      <div class="fiber-card">
+         <h3 class="fiber-title">食物繊維の種類とその働きの違い</h3>
+
+  <div class="fiber-row">
+    <div class="fiber-header">水溶性食物繊維</div>
+    <div class="fiber-list">
+      ・消化速度の抑制<br>
+      ・血糖値上昇の抑制<br>
+      ・コレステロールの吸収抑制<br>
+      ・便秘の予防
+    </div>
+  </div>
+
+  <div class="fiber-row">
+    <div class="fiber-header">不溶性食物繊維</div>
+    <div class="fiber-list">
+      ・腸の蠕動運動の抑制<br>
+      ・腸内環境の整備<br>
+      ・食事の満足感の向上<br>
+      ・有害物質の排泄
+    </div>
+  </div>
+</div>
+
+<br>
+        <p>
+            　<span class="maru-key">食物繊維</span>はヒトの消化酵素では分解されず、大腸まで達する成分です。水に溶ける水溶性食物繊維と、溶けない不溶性食物繊維とに分類されます。これらの食物繊維は、便秘の予防をはじめとする整腸効果だけでなく、血糖値上昇の抑制、血液中のコレステロール濃度の低下など、多くの生理機能が明らかになっています。
+        </p>
+        <br>
+        <p>
+            　<span class="maru-key">食物繊維</span>は、野菜、きのこ、海藻、豆、いもなどに豊富に含まれています。現代の食生活に不足しがちな栄養素であるため、意識して摂取していきましょう。
+        </p>
+
+        <div class="section-divider"></div>
+
+        <h3 class="section-title">ミネラル</h3>
+        <p>
+          　ミネラルとビタミンはそれぞれたくさんの種類が発見されています。ミネラルはカルシウムや鉄など現在114種類もの成分があり、現時点で私たちの身体に欠かせない成分は16種類だとわかっています。ビタミンは全部で13種類存在します。 
+        
+        </p>
+        <br>
+        <p>
+            　どちらも身体の機能を保つためには必要な栄養素です。これらの中から一部抜粋して紹介します。
+        </p>
+
+<div class="mineral-card">
+
+  <h3 class="mineral-title">ミネラル</h3>
+
+  <!-- カルシウム -->
+  <div class="mineral-row">
+    <div class="mineral-label">カルシウム</div>
+
+    <div class="mineral-content">
+      <div class="mineral-item">
+        <strong>欠乏症：</strong><br>
+        骨軟化症、骨粗しょう症
+      </div>
+
+      <div class="mineral-item">
+        <strong>過剰症：</strong><br>
+        高カルシウム血症による腎障害や血管障害、尿路結石、前立腺がん
+      </div>
+    </div>
+  </div>
+
+  <!-- 鉄 -->
+  <div class="mineral-row">
+    <div class="mineral-label">鉄</div>
+
+    <div class="mineral-content">
+      <div class="mineral-item">
+        <strong>欠乏症：</strong><br>
+        鉄欠乏症貧血、酸素が全身に供給されず疲れやすくなる、<br>
+        持久力が落ちる、頭痛、動悸、息切れ、食欲不振など
+      </div>
+
+      <div class="mineral-item">
+        <strong>過剰症：</strong><br>
+        嘔吐などの胃腸症状、鉄沈着症
+      </div>
+    </div>
+  </div>
+
+</div>
+<br>
+<p>
+   　<span class="maru-key">カルシウム</span>のほとんどが骨や歯の主成分になります。ごく一部は血液や組織液、細胞に含まれ、止血作用や筋肉の収縮作用を強めたり、筋肉の興奮を抑えたりするはたらきがあります。 
+</p>
+<p>
+   　<span class="maru-key">カルシウム</span>が長期的に不足すると、骨粗しょう症のリスクが高まります。またカルシウムを過剰に摂取すると、高カルシウム血症を起こし、腎臓や血管に障害が出ます。尿路結石を引き起こす可能性もあります。 
+</p>
+<br>
+<p>
+　<span class="maru-key">鉄</span>は赤血球中のヘモグロビンに多く存在します。鉄は酸素の運搬に重要な働きを担っており、これが不足すると、鉄欠乏症貧血となり、酸素の供給が十分にできなくなります。集中力の低下や頭痛、食欲不振などの症状があります。また、筋力低下や疲労感といった症状も起こります。
+</p>
+<br>
+<p>
+　これらのミネラルは通常の食事では、過剰摂取となるのはごくまれです。しかしサプリメントなどを取り続けると、過剰症を起こします。服用には十分注意しましょう。 
+</p>
+
+<div class="section-divider"></div>
+
+<h3 class="section-title">ビタミン</h3>
+<div class="vitamin-card">
+
+  <h3 class="vitamin-title">脂溶性ビタミン</h3>
+
+  <!-- ビタミンA -->
+  <div class="vitamin-row">
+    <div class="vitamin-label">ビタミンA</div>
+
+    <div class="vitamin-content">
+      <div class="vitamin-item">
+        <strong>欠乏症：</strong><br>
+        暗いところで視力が効かなくなる夜盲症、粘膜や皮膚が乾燥し、細菌などに感染しやすくなる
+      </div>
+
+      <div class="vitamin-item">
+        <strong>過剰症：</strong><br>
+        体内に蓄積され、頭痛や吐き気を引き起こす
+      </div>
+    </div>
+  </div>
+
+  <!-- ビタミンE -->
+  <div class="vitamin-row">
+    <div class="vitamin-label">ビタミンE</div>
+
+    <div class="vitamin-content">
+      <div class="vitamin-item">
+        <strong>欠乏症：</strong><br>
+        赤血球膜が弱くなり、溶血性貧血を起こすことがある
+      </div>
+
+      <div class="vitamin-item">
+        <strong>過剰症：</strong><br>
+        発症しにくいが、出血しやすくなる報告もある
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- 水溶性ビタミン -->
+<div class="vitamin-card">
+
+  <h3 class="vitamin-title">水溶性ビタミン</h3>
+
+  <!-- B1 -->
+  <div class="vitamin-row">
+    <div class="vitamin-label">ビタミンB1</div>
+
+    <div class="vitamin-content">
+      <div class="vitamin-item">
+        <strong>欠乏症：</strong><br>
+        エネルギー不足で疲れやすくなったり、イライラしたりする。<br>
+        慢性的に続くと脚気やウェルニッケ脳症などを発症する
+      </div>
+
+      <div class="vitamin-item">
+        <strong>過剰症：</strong><br>
+        ×
+      </div>
+    </div>
+  </div>
+
+  <!-- B2 -->
+  <div class="vitamin-row">
+    <div class="vitamin-label">ビタミンB2</div>
+
+    <div class="vitamin-content">
+      <div class="vitamin-item">
+        <strong>欠乏症：</strong><br>
+        万一不足すると、口内炎や口角炎、脂漏性皮膚炎を起こす
+      </div>
+
+      <div class="vitamin-item">
+        <strong>過剰症：</strong><br>
+        ×
+      </div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="vitamin-row">
+    <div class="vitamin-label">ビタミンC</div>
+
+    <div class="vitamin-content">
+      <div class="vitamin-item">
+        <strong>欠乏症：</strong><br>
+        皮下や歯ぐきから出血する壊血病
+      </div>
+
+      <div class="vitamin-item">
+        <strong>過剰症：</strong><br>
+        ほとんどないが、過剰摂取で下痢を引き起こす可能性
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<p>
+ 　13種のビタミンは、4つの脂溶性と9つの水溶性に分類されます。脂溶性ビタミンは、油に溶けやすい性質のあるビタミンで、水溶性ビタミンは水に溶けやすいビタミンです。
+</p>
+<br>
+<p>
+　脂溶性は体内に蓄えられ、排出されることがないため、摂りすぎると不調の原因となります。一方、水溶性は血液などの体液に溶け込んでおり、摂りすぎても排泄されるため、過剰摂取による不調の心配は少ないです。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンA</span>は、目や皮膚、粘膜などの健康を守り、感染症を予防する働きをします。視覚の情報を伝えるタンパク質の成分になります。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンA</span>が不足すると、視覚障害を招いてしまう可能性があります。また皮膚や粘膜が乾燥してしまうため、細菌に感染しやすくなってしまいます。また過剰に摂取すると、身体に不調が現れる恐れがあります。短期間過剰摂取した場合、頭痛や吐き気、めまい、目のかすみなどの症状が現れます。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンE</span>は、細胞膜の酸化を抑えて、有害な過酸化脂質から細胞を守る抗酸化作用があります。これは細胞を傷つけ、老化や免疫機能の低下、がんなどの原因から守ってくれる働きです。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンE</span>が不足すると、身体の酸化が進行し、最も影響が受けやすい赤血球の膜が破壊され、溶血性貧血が　引き起こされることがあります。過剰に摂取した場合の体への悪影響はほとんどありません。しかしサプリメントなどを大量に摂取した場合、出血しやすくなる可能性があります。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンB1</span>は、炭水化物をエネルギーに変えるために欠かせないビタミンです。不足すると、糖質をエネルギーに変換できず、疲労感や倦怠感を引き起こします。またビタミンB1の不足が深刻化すると、脳や神経系に影響を及ぼすこともあります。代表的な例が脚気という病気です。
+</p>
+<br>
+<p>
+　<span class="maru-key">脚気</span>とは、全身のむくみや下半身の倦怠感、痺れなどの症状が起きる病気です。初期症状として食欲の低下や全身のだるさがあり、とくに下半身に倦怠感が生まれます。次第に足のしびれやむくみ、動悸、息切れ、感覚の麻痺などの症状が現れます。さらに進行すると手足に力が入らず寝たきりとなり、そのまま放置すると心不全が悪化して死に至ることもあります。
+</p>
+<br>
+<p>
+　大正時代には結核と並び、2大国民病と言われていました。現代は食が豊富になりましたが、その分偏った食生活が増えています。これにより現代でも脚気予備軍は増加しています。ビタミンB1の不足には注意しましょう。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンB2</span>は、3大栄養素の代謝に関わるビタミンです。炭水化物、脂質、タンパク質をエネルギーに変えるサポートをしています。特に、脂質をエネルギーに変える際に必要とされています。また成長を促進し、皮膚や粘膜を守る働きもあります。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンB2</span>は食品に幅広く含まれています。魚介類、肉類、藻類、豆類、乳類、卵類、野菜類、種実類などです。各種の食品を組み合わせて食べると、十分に補給されます。しかし万が一ビタミンB2が不足した場合、口内炎、口角炎、脂漏性皮膚炎などを引き起こします。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンC</span>は、コラーゲンの生成に不可欠の化合物です。タンパク質の1種であるコラーゲンは、約3分の1の細胞と細胞をつなぎます。またビタミンCには、強い抗酸化作用を持ちます。日焼けを防ぐ作用やストレス、風邪などの病気に対する抵抗力を強めます。またがんや動脈硬化の予防、老化防止に有効です。
+</p>
+<br>
+<p>
+　<span class="maru-key">ビタミンC</span>が不足すると、細胞同士の結びつきが弱くなり、血管や皮膚、骨が脆くなり、壊血病を引き起こす原因となります。また皮下出血や骨形成不全、貧血になるおそれがあります。
+</p>
+<br>
+<p>
+　<span class="maru-key">水溶性ビタミン</span>は、脂溶性ビタミンと違い、摂りすぎても体内に蓄積されず、尿として排泄されます。しかし最近ではサプリメントにより過剰摂取が可能となっています。予期せぬ症状を引き起こさないためにも、サプリメントの服用は調整しましょう。
+</p>
+
+<div class="section-divider"></div>
+<p>
+   　ここでは栄養素の一部を紹介しました。他にも身体を健康に保ってくれる栄養素はたくさんあるので、興味が出たら調べてみましょう！ 
+</p>
+
+</section>
+</div>
+</main>
+
+  <!-- フッター -->
+  <footer class="app-footer">
+    <nav class="footer-nav">
+      <a href="../../home/index.html" class="footer-btn">
+        <img src="../../images/home.png" alt="ホーム" />
+        <span>ホーム</span>
+      </a>
+
+       <a href="../../record/index.html" class="footer-btn">
+        <img src="../../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+
+      <a href="../../columns/000_ColumnHome/index.html" class="footer-btn active">
+        <img src="../../images/article.png" alt="コラム" />
+        <span>コラム</span>
+      </a>
+
+      <a href="../../check/index.html" class="footer-btn">
+        <img src="../../images/human.png" alt="適量チェック" />
+        <span>適量チェック</span>
+      </a>
+
+    </nav>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById("menu-toggle");
+    const sideMenu = document.getElementById("side-menu");
+
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
+
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      overlay.classList.toggle("show");
+    });
+
+    overlay.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  </script>
+
+</body>
+
+</html>

@@ -279,19 +279,20 @@
 @media (max-width: 600px) {
   /* カード内の余白を小さくする */
   .pfc-chart-card {
-    padding: 14px 16px;
-    margin: 20px 0;
+    padding: 10px 12px;
+    margin: 10px 0;
   }
 
-  /* タイトル直下の余白調整 */
+  /* タイトル下の余白を極限までカット */
   .pfc-chart-card h3 {
-    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 4px;
   }
 
   /* グラフ周りの余白調整 */
   .pfc-chart-wrapper {
-    gap: 12px; /* アイテムの間の余白を小さく */
-    margin-top: 0;
+    gap: 4px; /* アイテムの間の余白を小さく */
+    margin-top: -8px;
   }
 
   /* グラフ本体のサイズ調整 */
@@ -302,7 +303,7 @@
 
   /* 画像の上の余白削る */
   .pfc-chart-wrapper img {
-    margin-top: -10px;
+    margin-top: -16px;
   }
 }
 

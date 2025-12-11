@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!res.ok) throw new Error(data.error || 'Signup failed');
       
       alert('登録に成功しました');
-      window.location.href = '/home/index.html';
+      window.location.href = 'index.html';
 
     } catch (err) {
       alert('登録に失敗しました: ' + (err.message || err));

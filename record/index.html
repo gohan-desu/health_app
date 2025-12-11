@@ -10,8 +10,7 @@
 
 </head>
 <body>
-
-   <!-- ヘッダー -->
+ <!-- ヘッダー -->
 <header class="app-header">
   <button class="menu-btn" id="menu-toggle">☰</button>
   <h1 class="page-title">記録</h1>
@@ -24,7 +23,7 @@
 <nav class="side-menu" id="side-menu">
   <ul>
     <li>
-      <a href="../index.html">
+      <a href="../home/index.html">
         <img src="../images/home.png" alt="ホーム">
         <span>ホーム</span>
       </a>
@@ -36,7 +35,7 @@
       </a>
     </li>
     <li>
-      <a href="../columns/000_ColumnHome/index.html">
+      <a href="../columns/index.html">
         <img src="../images/article.png" alt="コラム">
         <span>コラム</span>
       </a>
@@ -50,12 +49,13 @@
   </ul>
 </nav>
 
+
   <!-- コンテンツ領域 -->
   <main class="content">
 <!-- 🎯 現在の目標表示 -->
   <section class="goal-display">
     <p><strong>今の目標：</strong> <span id="current-goal">未設定</span></p>
-    <button id="edit-goal-btn" class="edit-goal-btn">変更</button>
+    <button id="edit-goal-btn" class="edit-goal-btn">✏️ 変更</button>
   </section>
 
   <main class="calendar-container">
@@ -137,10 +137,10 @@
         <div class="question">
           <label>以下から選択：</label>
           <div class="preset-goals">
-            <button type="button" class="preset-btn" data-goal="野菜を1日2食に取り入れよう！">野菜を1日2食に取り入れよう！</button><br>
-            <button type="button" class="preset-btn" data-goal="間食を1日1回までにしよう！">間食を1日1回までにしよう！</button><br>
-            <button type="button" class="preset-btn" data-goal="毎食後に水を1杯飲もう！">毎食後に水を1杯飲もう！</button><br>
-            <button type="button" class="preset-btn" data-goal="バランスを意識した食事を心がけよう！">バランスを意識した食事を心がけよう！</button>
+            <button type="button" class="preset-btn" data-goal="🌿 野菜を1日2食に取り入れよう！">野菜を1日2食に取り入れよう！</button><br>
+            <button type="button" class="preset-btn" data-goal="🍫 間食を1日1回までにしよう！">間食を1日1回までにしよう！</button><br>
+            <button type="button" class="preset-btn" data-goal="💧 毎食後に水を1杯飲もう！">毎食後に水を1杯飲もう！</button><br>
+            <button type="button" class="preset-btn" data-goal="🥗 バランスを意識した食事を心がけよう！">バランスを意識した食事を心がけよう！</button>
           </div>
         </div>
 
@@ -178,22 +178,21 @@
       <form id="checklist-form"></form>
     </div>
   </div>
+
   </main>
 
-    <!-- フッター -->
+  <!-- フッター -->
   <footer class="app-footer">
+      
     <nav class="footer-nav">
-      <a href="../index.html" class="footer-btn">
+      <a href="../home/index.html" class="footer-btn">
         <img src="../images/home.png" alt="ホーム" />
         <span>ホーム</span>
       </a>
 
-      <a href="../record/index.html" class="footer-btn active">
-        <img src="../images/pen.png" alt="記録" />
-        <span>記録</span>
-      </a>
 
-      <a href="../columns/000_ColumnHome/index.html" class="footer-btn">
+
+      <a href="../columns/index.html" class="footer-btn">
         <img src="../images/article.png" alt="コラム" />
         <span>コラム</span>
       </a>
@@ -202,6 +201,13 @@
         <img src="../images/human.png" alt="適量チェック" />
         <span>適量チェック</span>
       </a>
+
+            <a href="../record/index.html" class="footer-btn active">
+        <img src="../images/pen.png" alt="記録" />
+        <span>記録</span>
+      </a>
+
+      
     </nav>
   </footer>
 

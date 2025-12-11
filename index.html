@@ -93,6 +93,11 @@
   }
 }
 
+
+
+
+
+
   </style>
 </head>
 <body>
@@ -256,7 +261,27 @@ document.getElementById("motivation").textContent =
 
 /* ===== カレンダー（記録画面のコードを再利用） ===== */
 /* ※ generateCalendar() などの関数は共通JSから読み込んでもOK */
+// ===== ホーム専用：チェックリスト背景クリックで閉じる =====
 
+// モーダルと中身を取得
+const checklistModal_H = document.getElementById("checklist-modal");
+const checklistContent_H = document.querySelector("#checklist-modal .modal-content");
+
+// ① 中身クリックは閉じない
+checklistContent_H.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+// ② 背景クリックで閉じる（ホーム専用）
+checklistModal_H.addEventListener("click", () => {
+  checklistModal_H.classList.remove("show");
+});
+
+// ③ × ボタンもここで処理（calendar.js を上書き）
+document.getElementById("close-checklist-modal")
+  .addEventListener("click", () => {
+    checklistModal_H.classList.remove("show");
+});
 </script>
 
 <script src="./record/calendar.js"></script>

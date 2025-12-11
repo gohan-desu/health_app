@@ -112,7 +112,43 @@
         });
         calendarGrid.appendChild(cell);
     }
+    // 📌 カレンダーを描画したあとに背景を更新
+updateMonthBackground(year, month, totalDays);
+
     }
+
+    // =============================
+// 🎨 月の達成率で背景色を変更
+// =============================
+function updateMonthBackground(year, month, totalDays) {
+  const container = document.body; // ← ページ全体を対象に変更
+
+  let completedDays = 0;
+
+  for (let day = 1; day <= totalDays; day++) {
+    const key = `${year}-${month}-${day}`;
+    const data = JSON.parse(localStorage.getItem(key));
+    if (data && data.completed) completedDays++;
+  }
+
+  const rate = completedDays / totalDays;
+
+  // まずは全部のクラスを削除
+ container.classList.remove("rate-25", "rate-50", "rate-75", "rate-100");
+
+if (rate === 1) {
+  container.classList.add("rate-100");
+} else if (rate >= 0.75) {
+  container.classList.add("rate-75");
+} else if (rate >= 0.5) {
+  container.classList.add("rate-50");
+} else if (rate >= 0.25) {
+  container.classList.add("rate-25");
+}
+
+  }
+
+    
 
     // =============================
     // 年・月リスト生成
@@ -428,3 +464,5 @@ checklistModal.addEventListener("click", (e) => {
         checklistModal.classList.remove("show");
     }
     });
+
+ 

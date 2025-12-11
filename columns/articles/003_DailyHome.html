@@ -75,6 +75,57 @@
  
   
 }
+
+/* ========== スマホ対応（幅 600px 以下） ========== */
+@media (max-width: 600px) {
+
+  .article-wrapper {
+    padding: 0 10px;
+    margin-bottom: 80px;
+  }
+
+  .article-title {
+    font-size: 1.4rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+
+   .chart-box {
+    padding: 14px;             /* 余白をスマホ用に調整 */
+    border-width: 3px;         /* 枠を少し細く */
+    border-radius: 16px;
+  }
+
+  .chart-box h4 {
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+
+  .chart-img {
+    border-radius: 10px;
+  }
+
+  .chart-credit {
+    font-size: 0.75rem;        /* 文字を少し小さくして整える */
+    line-height: 1.4;
+    margin-top: 8px;
+  }
+
+  .chart-credit a {
+    font-size: 0.75rem;
+    word-break: break-all;     /* 長いURLが画面から飛び出すのを防ぐ */
+  }
+}
+
+
+    /* 横スクロール禁止 */
+    html, body {
+      overflow-x: hidden;
+    }
+
+
 </style>
 <body>
  <!-- ヘッダー -->

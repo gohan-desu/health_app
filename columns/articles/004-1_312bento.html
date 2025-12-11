@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3・1・2弁当箱法</title>
-    <style>
-        body {
+    <link rel="stylesheet" href="../../css/style.css" />
+</head>
+<style>
+body {
     background: #f7f7f7;
     margin: 0;
     font-family: sans-serif;
@@ -320,6 +322,210 @@ a:hover {
     height: auto;    
     display: block;  
 }
+
+/* ============================================
+   📱 スマホ対応（幅 768px 以下）
+============================================ */
+@media (max-width: 768px) {
+
+  /* --- 全体余白調整 --- */
+  body {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 70px 12px 90px 12px;
+  }
+
+  /* --- サイドメニュー --- */
+  .sidebar-menu {
+    width: 75%;              /* 画面幅に合わせて縮小 */
+    max-width: 260px;
+  }
+
+  /* --- タイトル文字サイズ --- */
+  .top-bar-title {
+    font-size: 1rem;
+  }
+
+  /* --- 導入部分 --- */
+  .intro h2 {
+    font-size: 1.2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* --- ボックス内文章の可読性UP --- */
+  .content-box {
+    padding: 16px;
+    font-size: 0.95rem;
+  }
+
+  /* --- 画像枠をスマホ幅に合わせる --- */
+  .image-placeholder-rule-detail2 {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 180px;
+    margin-top: 16px;
+    order: 2;
+  }
+
+  /* --- 文章と画像を縦並びに変更 --- */
+  .rule-detail2 {
+    flex-direction: column;
+  }
+
+  .text-content {
+    padding-right: 0;
+    order: 1;
+  }
+
+  /* --- 小見出し --- */
+  .definition h3,
+  .rules h3,
+  .rule-detail h3,
+  .rule-detail2 h4,
+  .rule-detail3 h5,
+  .rule-detail4 h6 {
+    font-size: 1.05rem;
+    padding-left: 6px;
+  }
+
+  /* --- 点線の区切り線 --- */
+  .section-divider {
+    margin: 40px 0;
+  }
+
+  /* --- アイコン画像縮小 --- */
+  .sidebar-menu img {
+    width: 22px;
+  }
+
+  .top-bar img {
+    width: 30px;
+  }
+
+  /* --- フッター --- */
+  .footer-btn img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .footer-btn {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+}
+/* ============================================
+   📱 スマホ最適化（幅 480px 以下）
+============================================ */
+@media (max-width: 480px) {
+
+  /* ---- トップバー ---- */
+  .top-bar {
+    padding: 10px 0;
+  }
+
+  .top-bar-title {
+    font-size: 1rem;
+    flex: 1;
+    text-align: center;
+  }
+
+  .top-bar-item,
+  .top-bar img {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* ---- main の余白調整 ---- */
+  main {
+    padding: 70px 10px 90px 10px;
+  }
+
+  /* ---- 文章サイズ ---- */
+  .intro p,
+  .definition p,
+  .procedure1 p,
+  .procedure2 p,
+  .rule-detail p,
+  .rule-detail4 p,
+  .summary p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  /* ---- 画像ボックス ---- */
+  .content-box img {
+    width: 100%;
+    height: auto;
+  }
+
+  /* ---- 画像 + テキストの横並びを縦並びへ ---- */
+  .rule-detail2 {
+    flex-direction: column;
+  }
+
+  .text-content {
+    padding-right: 0;
+  }
+
+  .image-placeholder-rule-detail2 {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 150px;
+    margin-top: 14px;
+  }
+
+  /* ---- 小見出し ---- */
+  .definition h3,
+  .rules h3,
+  .rule-detail h3,
+  .rule-detail2 h4,
+  .rule-detail3 h5,
+  .rule-detail4 h6,
+  .heading-7,
+  .heading-8 {
+    font-size: 1.05rem;
+    padding-left: 6px;
+  }
+
+  /* ---- セクション区切り ---- */
+  .section-divider {
+    margin: 35px 0;
+  }
+
+  /* ---- フッター ---- */
+  .footer-btn img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .footer-btn {
+    font-size: 11px;
+    padding: 2px 4px;
+  }
+}
+
+/* 700ml画像のスマホ最適化 */
+@media (max-width: 600px) {
+  .image-placeholder-rule-detail2 {
+    width: 100% !important;
+    max-width: 100%;
+    height: auto !important;
+  }
+
+  .image-placeholder-rule-detail2 img {
+    width: 80%;
+    height: auto;
+  }
+}
+
+
     </style>
     
     <link rel="stylesheet" href="../../css/style.css">

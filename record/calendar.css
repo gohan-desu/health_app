@@ -21,6 +21,21 @@ body {
 }
 
 /* ======================================
+   🧭 ヘッダー
+====================================== */
+.header {
+  text-align: center;
+  background: var(--card-bg);
+  padding: 1em 0;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+.header h1 {
+  color: var(--accent);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+/* ======================================
    🗓️ カレンダー全体レイアウト
 ====================================== */
 .calendar-container {
@@ -450,4 +465,106 @@ input[type="text"] {
 
   /* 角を丸くする */
   border-top-right-radius: 6px;
+}
+
+/* 💡 月の達成率で背景色を変える */
+
+/* 全体背景は無しにする */
+body.rate-25,
+body.rate-50,
+body.rate-75,
+body.rate-100 {
+  background: none;
+  position: relative;
+  
+}
+
+/* ▼ パターン部分を追加する（下部に repeat-x） */
+body.rate-25::after {
+  content: "";
+  position: fixed;   /* ← スクロールしても常に下に表示 */
+  bottom: 70px;      /* フッターの高さに合わせて調整 */
+  left: 0;
+  width: 100%;
+  height: 500px;
+  background-image: url("../images/1me.png");
+  background-repeat: repeat-x;
+  background-size: auto 500px;
+  pointer-events: none; /* クリック邪魔しない */
+    /* ▼ ここがポイント：白の半透明を重ねる */
+  background-color: rgba(255,255,255,0.7);
+
+  background-blend-mode: lighten;  /* ← 画像を明るく薄く見せる */
+    z-index: -1; /* ← ::after より手前に置く */
+}
+
+body.rate-50::after {
+  content: "";
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  background-image: url("../images/2nae.png");
+  background-repeat: repeat-x;
+  background-size: auto 400px;
+  pointer-events: none;
+    /* ▼ ここがポイント：白の半透明を重ねる */
+  background-color: rgba(255,255,255,0.7);
+
+  background-blend-mode: lighten;  /* ← 画像を明るく薄く見せる */
+    z-index: -1; /* ← ::after より手前に置く */
+}
+
+body.rate-75::after {
+  content: "";
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  width: 100%;
+  height: 450px;
+  background-image: url("../images/3ki.png");
+  background-repeat: repeat-x;
+  background-size: auto 450px;
+  pointer-events: none;
+    /* ▼ ここがポイント：白の半透明を重ねる */
+  background-color: rgba(255,255,255,0.7);
+
+  background-blend-mode: lighten;  /* ← 画像を明るく薄く見せる */
+    z-index: -1; /* ← ::after より手前に置く */
+}
+
+body.rate-100::after {
+  content: "";
+  position: fixed;
+  bottom: 70px;
+  left: 0;
+  width: 100%;
+  height: 550px;
+  background-image: url("../images/4kigi.png");
+  background-repeat: repeat-x;
+  background-size: auto 550px;
+  pointer-events: none;
+    /* ▼ ここがポイント：白の半透明を重ねる */
+  background-color: rgba(255,255,255,0.7);
+
+  background-blend-mode: lighten;  /* ← 画像を明るく薄く見せる */
+    z-index: -1; /* ← ::after より手前に置く */
+}
+
+/* ▼ 背景の薄い白幕（後ろに回す） */
+
+
+body.rate-25::before,
+body.rate-50::before,
+body.rate-75::before,
+body.rate-100::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.3);
+  z-index: -1; /* ← ::after より手前に置く */
 }

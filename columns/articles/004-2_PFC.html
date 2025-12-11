@@ -259,6 +259,7 @@
     html, body {
       overflow-x: hidden;
     }
+
 @media (max-width: 600px) {
   .pfc-chart-wrapper {
     flex-direction: column;
@@ -274,6 +275,37 @@
   height: auto;
   display: block;
 }
+
+@media (max-width: 600px) {
+  /* カード内の余白を小さくする */
+  .pfc-chart-card {
+    padding: 14px 16px;
+    margin: 20px 0;
+  }
+
+  /* タイトル直下の余白調整 */
+  .pfc-chart-card h3 {
+    margin-bottom: 10px;
+  }
+
+  /* グラフ周りの余白調整 */
+  .pfc-chart-wrapper {
+    gap: 12px; /* アイテムの間の余白を小さく */
+    margin-top: 0;
+  }
+
+  /* グラフ本体のサイズ調整 */
+  .pfc-chart {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* 画像の上の余白削る */
+  .pfc-chart-wrapper img {
+    margin-top: -10px;
+  }
+}
+
 
 
 </style>

@@ -6,6 +6,17 @@
   <title>コラム</title>
   <link rel="stylesheet" href="../css/style.css" />
   <link rel="stylesheet" href="calendar.css" />
+  <style>
+    /* スマホの時だけカレンダーカードに余白をつける */
+@media (max-width: 480px) {
+  .calendar-container {
+    margin: 20px auto !important;
+    padding: 16px !important;
+    width: 90% !important; /* ← 画面いっぱいになりすぎない */
+    border-radius: 14px;
+  }
+}
+  </style>
   
 
 </head>

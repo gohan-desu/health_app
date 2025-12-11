@@ -82,6 +82,17 @@
   transform: translateY(-2px);
   transition: 0.2s;
 }
+
+/* スマホの時だけカレンダーカードに余白をつける */
+@media (max-width: 480px) {
+  .calendar-container {
+    margin: 20px auto !important;
+    padding: 16px !important;
+    width: 90% !important; /* ← 画面いっぱいになりすぎない */
+    border-radius: 14px;
+  }
+}
+
   </style>
 </head>
 <body>

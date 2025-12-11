@@ -320,6 +320,104 @@ a:hover {
     height: auto;    
     display: block;  
 }
+
+/* ============================================
+   📱 スマホ対応（幅 768px 以下）
+============================================ */
+@media (max-width: 768px) {
+
+  /* --- 全体余白調整 --- */
+  body {
+    font-size: 15px;
+  }
+
+  main {
+    padding: 70px 12px 90px 12px;
+  }
+
+  /* --- サイドメニュー --- */
+  .sidebar-menu {
+    width: 75%;              /* 画面幅に合わせて縮小 */
+    max-width: 260px;
+  }
+
+  /* --- タイトル文字サイズ --- */
+  .top-bar-title {
+    font-size: 1rem;
+  }
+
+  /* --- 導入部分 --- */
+  .intro h2 {
+    font-size: 1.2rem;
+  }
+
+  .intro p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* --- ボックス内文章の可読性UP --- */
+  .content-box {
+    padding: 16px;
+    font-size: 0.95rem;
+  }
+
+  /* --- 画像枠をスマホ幅に合わせる --- */
+  .image-placeholder-rule-detail2 {
+    width: 100% !important;
+    height: auto !important;
+    min-height: 180px;
+    margin-top: 16px;
+    order: 2;
+  }
+
+  /* --- 文章と画像を縦並びに変更 --- */
+  .rule-detail2 {
+    flex-direction: column;
+  }
+
+  .text-content {
+    padding-right: 0;
+    order: 1;
+  }
+
+  /* --- 小見出し --- */
+  .definition h3,
+  .rules h3,
+  .rule-detail h3,
+  .rule-detail2 h4,
+  .rule-detail3 h5,
+  .rule-detail4 h6 {
+    font-size: 1.05rem;
+    padding-left: 6px;
+  }
+
+  /* --- 点線の区切り線 --- */
+  .section-divider {
+    margin: 40px 0;
+  }
+
+  /* --- アイコン画像縮小 --- */
+  .sidebar-menu img {
+    width: 22px;
+  }
+
+  .top-bar img {
+    width: 30px;
+  }
+
+  /* --- フッター --- */
+  .footer-btn img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .footer-btn {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+}
+
     </style>
     
     <link rel="stylesheet" href="../../css/style.css">

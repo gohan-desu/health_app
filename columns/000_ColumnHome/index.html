@@ -139,6 +139,20 @@ a {
   }
 }
 
+/* 縦書きにならないよう強制的に横書きに上書きする */
+.content,
+.content p,
+.content h2,
+.column-text,
+.column-text h3,
+.column-text h4 {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  transform: none !important;
+  white-space: normal !important;
+}
+
+
 </style>
 <body>
   <!-- ヘッダー -->

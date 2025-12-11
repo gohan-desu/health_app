@@ -8,46 +8,43 @@
 </head>
 
 <style>
- .content {
+/* ===============================
+   PCデザイン（元のコードそのまま）
+================================ */
+.content {
   flex: 1;
   padding-top: 56px;
-  
   overflow-y: auto;
   color: #2A621E; 
   font-size: 1.4em;
   border-bottom: 3px solid #d9ead3; 
- 
   margin-top: 10px;
-  /* 👇 ここに text-align: center; を追加します！ 👇 */
   text-align: center;
   padding-left: 210px;
   padding-right: 210px;
-
-  
 }
 
-.content h2{
-    text-align: center;
-    border-left: 5px solid #d9e76c; /* 左の緑の線 */
-    /* ブロック要素の幅をコンテンツの幅に合わせ、中央に配置 */
-    display: inline-block;
-    /* 線とテキストの間に少しスペースを空ける */
-    padding-left: 10px;
-    font-size: 1.4em;
-    margin-bottom: 20px;
+.content h2 {
+  text-align: center;
+  border-left: 5px solid #d9e76c;
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 1.4em;
+  margin-bottom: 20px;
 }
+
 .content p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: #222;
-    text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #222;
+  text-align: center;
 }
 
-/* ▼ 1つ目のpタグのみに適用するスタイル：黄緑（#A9D18E） ▼ */
+/* 最初の p のみ色変更 */
 .content p:first-of-type {
-    color: #5C9956;
-    font-weight: bold; /* 目立たせるために太字にするのもおすすめです */
-    font-size: 1.1em;
+  color: #5C9956;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 /* ===== コラムボタン共通 ===== */
@@ -55,14 +52,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d9e76c; /* イエローグリーン */
+  background-color: #d9e76c;
   border-radius: 16px;
   padding: 16px 20px;
   text-decoration: none;
   color: #222;
   transition: background-color 0.3s ease, transform 0.2s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-
 }
 
 /* ===== 大ボタン ===== */
@@ -72,13 +68,38 @@
   text-align: center;
   margin: 20px;
   padding: 24px 20px;
- 
-  
 }
 
-/* ========== スマホ対応（幅 600px 以下） ========== */
+/* 横スクロール禁止 */
+html, body {
+  overflow-x: hidden;
+}
+
+
+/* ==============================================
+   📱 スマホ対応（幅 600px 以下）完全統合版
+============================================== */
 @media (max-width: 600px) {
 
+  /* ---- コンテンツ本文 ---- */
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 60px;
+    font-size: 1.1em;
+  }
+
+  .content h2 {
+    font-size: 1.2em;
+    padding-left: 8px;
+  }
+
+  .content p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  /* ---- 記事ページ用（元コード保持） ---- */
   .article-wrapper {
     padding: 0 10px;
     margin-bottom: 80px;
@@ -92,9 +113,9 @@
     font-size: 1.1rem;
   }
 
-   .chart-box {
-    padding: 14px;             /* 余白をスマホ用に調整 */
-    border-width: 3px;         /* 枠を少し細く */
+  .chart-box {
+    padding: 14px;
+    border-width: 3px;
     border-radius: 16px;
   }
 
@@ -108,23 +129,28 @@
   }
 
   .chart-credit {
-    font-size: 0.75rem;        /* 文字を少し小さくして整える */
+    font-size: 0.75rem;
     line-height: 1.4;
     margin-top: 8px;
   }
 
   .chart-credit a {
     font-size: 0.75rem;
-    word-break: break-all;     /* 長いURLが画面から飛び出すのを防ぐ */
+    word-break: break-all;
+  }
+
+  /* ---- コラムボタン ---- */
+  .column-btn.large {
+    width: 100%;
+    margin: 12px 0;
+    padding: 16px 12px;
+  }
+
+  .column-btn.large h3,
+  .column-btn.large h4 {
+    font-size: 1.1em;
   }
 }
-
-
-    /* 横スクロール禁止 */
-    html, body {
-      overflow-x: hidden;
-    }
-
 
 </style>
 <body>

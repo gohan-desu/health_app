@@ -7,65 +7,56 @@
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <style>
- .content {
+ /* ===============================
+   PC デザイン
+================================ */
+.content {
   flex: 1;
   padding-top: 56px;
-  
   overflow-y: auto;
-  color: #2A621E; 
+  color: #2A621E;
   font-size: 1.4em;
-  border-bottom: 3px solid #d9ead3; 
+  border-bottom: 3px solid #d9ead3;
   padding-left: 210px;
   padding-right: 210px;
   text-align: center;
-  
 }
 
-.content h2{
-    
-    border-left: 5px solid #d9e76c; /* 左の緑の線 */
-    
-    display: inline-block;
-    /* 線とテキストの間に少しスペースを空ける */
-    padding-left: 10px;
-    font-size: 1.4em;
-    margin-bottom: 20px;
-    
-    
+.content h2 {
+  border-left: 5px solid #d9e76c;
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 1.4em;
+  margin-bottom: 20px;
 }
+
 .content p {
-    margin-bottom: 20px;
-    font-size: 1.1rem;
-    color: #222;
-    text-align: center;
-     
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #222;
+  text-align: center;
 }
 
-
-
-/*  コラムボタン共通  */
+/* コラムボタン（共通） */
 .column-btn {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #d9e76c; 
+  background-color: #d9e76c;
   border-radius: 16px;
   padding: 16px 18px;
   text-decoration: none;
   color: #222;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  
+  transition: 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/*  大ボタン  */
 .column-btn.large {
   flex-direction: column;
   align-items: center;
   text-align: center;
   margin: 20px;
   padding: 24px 20px;
-  
 }
 
 .section-divider {
@@ -73,16 +64,59 @@
   margin: 40px 0;
 }
 
-
+/* ===============================
+   📱 スマホ対応（ここから重要）
+================================ */
 @media (max-width: 768px) {
-  .content p,
-  .column-btn,
+
+  /* 本文の幅調整（最重要） */
+  .content {
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 1.1rem;
+  }
+
+  .content h2 {
+    font-size: 1.25rem;
+  }
+
+  .content p {
+    font-size: 1rem;
+    padding: 0 8px;
+    line-height: 1.7;
+  }
+
+  /* ボタンをスマホ用に拡大 */
+  .column-btn.large {
+    width: 100%;
+    margin: 16px 0;
+    padding: 20px 16px;
+  }
+
+  .column-btn.large h3,
+  .column-btn.large h4 {
+    font-size: 1.1rem;
+  }
+
+  /* 仕切り線の両端が詰まらないように調整 */
   .section-divider {
-    padding-left: 20px;
-    padding-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
 
+/* ===============================
+   強制的に横書きにする（縦書きバグ対策）
+================================ */
+.content,
+.content p,
+.content h2,
+.column-text h3,
+.column-text h4 {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+  white-space: normal !important;
+}
 
 </style>
 

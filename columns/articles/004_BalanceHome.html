@@ -17,8 +17,13 @@
   color: #7A9E28;
   font-size: 1.4em;
   border-bottom: 3px solid #d9ead3;
-  padding-left: 210px;
-  padding-right: 210px;
+  
+   /* ここを修正 */
+  max-width: 900px;     /* ← 中央カラムの最大幅 */
+  margin: 0 auto;       /* ← 左右中央寄せ */
+  padding-left: 24px;   /* ← 内側の余白 */
+  padding-right: 24px;
+
   text-align: center;
 }
 
@@ -32,6 +37,7 @@
   padding-left: 12px;
   border-left: 6px solid #A3C04A; /* 縦ライン */
   line-height: 1.4;
+  text-align: left;
 }
 
 .content p {

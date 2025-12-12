@@ -252,93 +252,133 @@ if (rate === 1) {
     // =============================
     // ✅ チェックリスト項目
     // =============================
-    function generateChecklistItems(goal) {
-    checklistForm.innerHTML = "";
+function generateChecklistItems(goal) {
+  checklistForm.innerHTML = "";
+
+  const goalType = localStorage.getItem("goalType") || "preset";
+
+  // =============================
+  // 🎯 自分で目標設定した場合
+  // =============================
+  if (goalType === "custom") {
+    const input = document.createElement("input");
+    input.type = "checkbox";
+    input.name = "achieved";
+
+    const label = document.createElement("label");
+    label.appendChild(input);
+    label.append(" 今日の目標を達成した！");
+
+    checklistForm.appendChild(label);
+    checklistForm.appendChild(document.createElement("br"));
+
+  } else {
+    // =============================
+    // 🥗 おすすめ・プリセット目標
+    // =============================
     let items = [];
 
     if (goal.includes("野菜")) {
-        items = [
+      items = [
         { name: "vege", label: "🥦 野菜を1日2食に取り入れた" },
         { name: "balance", label: "🍱 主食・主菜・副菜を意識した" },
         { name: "drink", label: "💧 食事中に水を飲んだ" },
-        ];
+      ];
     } else if (goal.includes("間食")) {
-        items = [
+      items = [
         { name: "snack", label: "🍫 間食をしなかった" },
         { name: "fruit", label: "🍎 間食に果物を選んだ" },
         { name: "water", label: "💧 水を飲んだ" },
-        ];
+      ];
     } else if (goal.includes("水") || goal.includes("水分")) {
-        items = [
+      items = [
         { name: "water1", label: "💧 朝に1杯飲んだ" },
         { name: "water2", label: "🥗 食事ごとに1杯飲んだ" },
         { name: "water3", label: "🌙 就寝前に1杯飲んだ" },
-        ];
+      ];
     } else {
-        items = [
+      items = [
         { name: "meal", label: "🍚 バランスの良い食事をした" },
         { name: "snack", label: "🍫 間食を控えた" },
         { name: "water", label: "💧 水を飲んだ" },
-        ];
+      ];
     }
 
     items.forEach(({ name, label }) => {
-        const input = document.createElement("input");
-        input.type = "checkbox";
-        input.name = name;
-        const lbl = document.createElement("label");
-        lbl.appendChild(input);
-        lbl.append(` ${label}`);
-        checklistForm.appendChild(lbl);
-        checklistForm.appendChild(document.createElement("br"));
+      const input = document.createElement("input");
+      input.type = "checkbox";
+      input.name = name;
+
+      const lbl = document.createElement("label");
+      lbl.appendChild(input);
+      lbl.append(` ${label}`);
+
+      checklistForm.appendChild(lbl);
+      checklistForm.appendChild(document.createElement("br"));
     });
+  }
 
-        // 📝 メモ欄を追加
-    const memoLabel = document.createElement("label");
-    memoLabel.textContent = "📝 今日のメモ";
-    memoLabel.style.display = "block";
-    memoLabel.style.marginTop = "0.8em";
+  // =============================
+  // 📝 メモ欄（共通）
+  // =============================
+  const memoLabel = document.createElement("label");
+  memoLabel.textContent = "📝 今日のメモ";
+  memoLabel.style.display = "block";
+  memoLabel.style.marginTop = "0.8em";
 
-    const memoArea = document.createElement("textarea");
-    memoArea.name = "memo";
-    memoArea.rows = 3;
-    memoArea.placeholder = "気づいたこと・感想などを書いてもOK";
-    memoArea.style.width = "100%";
-    memoArea.style.marginTop = "0.3em";
-    memoArea.style.borderRadius = "8px";
-    memoArea.style.padding = "8px";
-    memoArea.style.border = "1px solid #ccc";
-    memoArea.style.fontSize = "14px";
+  const memoArea = document.createElement("textarea");
+  memoArea.name = "memo";
+  memoArea.rows = 3;
+  memoArea.placeholder = "気づいたこと・感想などを書いてもOK";
+  memoArea.style.width = "100%";
 
-    memoLabel.appendChild(memoArea);
-    checklistForm.appendChild(memoLabel);
+  memoLabel.appendChild(memoArea);
+  checklistForm.appendChild(memoLabel);
+
+  const btn = document.createElement("button");
+  btn.type = "submit";
+  btn.className = "btn";
+  btn.textContent = "保存";
+  checklistForm.appendChild(btn);
+}
 
 
-    const btn = document.createElement("button");
-    btn.type = "submit";
-    btn.className = "btn";
-    btn.textContent = "保存";
-    checklistForm.appendChild(btn);
-    }
+  checklistForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-    checklistForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const data = {};
-    let completed = false;
-    checklistForm.querySelectorAll("input[type='checkbox']").forEach((input) => {
-        data[input.name] = input.checked;
-        if (input.checked) completed = true;
-    });
+  const data = {};
+  const checkboxes = checklistForm.querySelectorAll("input[type='checkbox']");
+  const goalType = localStorage.getItem("goalType") || "preset";
 
-        // 📝 メモ保存（←ここを先に data に入れるのが大事）
-    const memoValue = checklistForm.querySelector("textarea[name='memo']").value;
-    data.memo = memoValue;
+  let checkedCount = 0;
 
-    data.completed = completed;
-    localStorage.setItem(selectedDate, JSON.stringify(data));
-    checklistModal.classList.remove("show");
-    generateCalendar(currentYear, currentMonth);
-    });
+  checkboxes.forEach((input) => {
+    data[input.name] = input.checked;
+    if (input.checked) checkedCount++;
+  });
+
+  // 📝 メモ保存
+  const memoValue = checklistForm.querySelector("textarea[name='memo']").value;
+  data.memo = memoValue;
+
+  // 🎯 達成判定
+  let completed = false;
+
+  if (goalType === "custom") {
+    // 自分で目標設定 → 全部チェック必須
+    completed = checkedCount === checkboxes.length && checkboxes.length > 0;
+  } else {
+    // おすすめ目標 → 1つでもOK
+    completed = checkedCount > 0;
+  }
+
+  data.completed = completed;
+
+  localStorage.setItem(selectedDate, JSON.stringify(data));
+  checklistModal.classList.remove("show");
+  generateCalendar(currentYear, currentMonth);
+});
+
 
     // =============================
     // 🧠 初回：診断フォーム
@@ -359,21 +399,31 @@ if (rate === 1) {
     questionModal.classList.remove("show");
     goalModal.classList.add("show");
     localStorage.setItem("goal", goal);
+
+    localStorage.setItem("goalType", "preset");
+
     });
 
     // =============================
     // ✏️ 再設定：手動フォーム
     // =============================
-    manualForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const customGoal = document.getElementById("custom-goal").value.trim();
-    const selectedPreset = manualForm.dataset.selectedGoal;
-    const goal = customGoal || selectedPreset || "🥗 バランスを意識した食事を心がけよう！";
-    localStorage.setItem("goal", goal);
-    goalText.textContent = goal;
-    questionModal.classList.remove("show");
-    goalModal.classList.add("show");
-    });
+   manualForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const customGoal = document.getElementById("custom-goal").value.trim();
+  const selectedPreset = manualForm.dataset.selectedGoal;
+
+  const isCustom = !!customGoal; // ← 自由入力かどうか
+  const goal = customGoal || selectedPreset || "🥗 バランスを意識した食事を心がけよう！";
+
+  localStorage.setItem("goal", goal);
+  localStorage.setItem("goalType", isCustom ? "custom" : "preset"); // ← 追加
+
+  goalText.textContent = goal;
+  questionModal.classList.remove("show");
+  goalModal.classList.add("show");
+});
+
 
     // 🎯 プリセット選択ボタン
     document.querySelectorAll(".preset-btn").forEach((btn) => {

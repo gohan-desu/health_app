@@ -256,7 +256,7 @@ a:hover {
 .image-placeholder-rule-detail2 {
     width: 400px; /* 画像エリアの固定幅 */
     height: 250px; /* 画像エリアの固定高さ */
-    border: 2px solid #f7f7f7 ;/* 外側の枠線 */
+    border: 2px solid #A3C04A ;/* 外側の枠線 */
     border-radius: 10px; 
     background-color: #f7f7f7; 
     display: flex;
@@ -340,15 +340,29 @@ a:hover {
 
   /* 画像ボックスの最大幅を制限し、中央寄せ */
   .content-box.image-placeholder {
-    max-width: 900px;
+    max-width: 1150px;
     margin-left: auto;
     margin-right: auto;
   }
 
   /* 画像を縮小して大きすぎないように調整 */
   .content-box.image-placeholder img {
-    max-width: 70%;
+    max-width: 100%;
     height: auto;
+  }
+
+   .image-placeholder-rule-detail2 {
+    width: 50vw;              /* 画面の半分の幅 */
+    height: auto;             /* 高さは自動調整 */
+    max-width: 600px;         /* 必要なら最大幅の上限をつける（任意） */
+    margin-left: auto;        /* 中央寄せ */
+    margin-right: auto;       /* 中央寄せ */
+  }
+
+  .image-placeholder-rule-detail2 img {
+    width: 90%;              /* 枠内でフィット */
+    height: auto;
+    object-fit: contain;
   }
 }
 

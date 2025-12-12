@@ -6,6 +6,7 @@
     <title>3・1・2弁当箱法</title>
     <link rel="stylesheet" href="../../css/style.css" />
 </head>
+
 <style>
 body {
     background: #f7f7f7;
@@ -524,63 +525,60 @@ a:hover {
     height: auto;
   }
 }
+</style>
 
-
-    </style>
-    
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
 <body>
+    <!-- ヘッダー -->
+  <header class="app-header">
+    <button class="menu-btn" id="menu-toggle">☰</button>
+    <h1 class="page-title">コラム</h1>
+    <button class="icon-btn">
+      <img src="../../images/icon.png" alt="ユーザー" />
+    </button>
+  </header>
+
+  <!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../../index.html">
+        <img src="../../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../record/index.html">
+        <img src="../../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../columns/000_ColumnHome/index.html">
+        <img src="../../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../check/index.html">
+        <img src="../../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
     <main>
-       
-       
-        <!--上のハンバーガーメニューとか-->
-      <!-- サイドメニュー -->
-     <div id="sidebarMenu" class="sidebar-menu">
-      <ul>
-        <li>
-        <a href="../../index.html">
-            <img src="../../images/home.png" alt="ホーム">
-            <span>ホーム</span>
-        </a>
-        </li>
-       <li>
-        <a href="../../record/index.html">
-          <img src="../../images/pen.png" alt="記録" />
-          <span>記録</span>
-        </a>
-       </li>
-       <li>
-        <a href="../../columns/000_ColumnHome/index.html">
-          <img src="../../images/article.png" alt="コラム" />
-          <span>コラム</span>
-        </a>
-       </li>
-       <li>
-        <a href="../../check/index.html">
-          <img src="../../images/human.png" alt="適量チェック" />
-          <span>適量チェック</span>
-        </a>
-       </li>
-      </ul>
-     </div>
         <div id="overlay" class="overlay"></div>
 
-       <div class="top-bar">
-        <div id="menuBtn" class="top-bar-item"><i class="fas fa-bars"></i></div>
-        <div class="top-bar-title">コラム</div>
-        <img src="../../images/icon.png" alt="ユーザー" />
-       </div>
         <section class="intro">
             <h2>🔰 初心者におすすめ！「3・1・2弁当箱法」</h2>
             <p>主食・主菜・副菜（<span class="ratio-highlight">3：1：2</span>）の比率で食事バランスを整えよう！</p>
 
             <div class="content-box image-placeholder">
                 <img src="../../images/312弁.png" >
-
-                
             </div>
         </section>
+
         <section class="definition scroll-container">
           <h3>「3・1・2弁当箱法」とは</h3>
           <p>
@@ -738,6 +736,7 @@ a:hover {
 
         menuBtn.addEventListener('click', toggleMenu); // ハンバーガーボタンをクリックしたとき
         overlay.addEventListener('click', toggleMenu); 
+
 
         // メニュー内のアイテムをクリックしたとき
         document.querySelectorAll('.sidebar-item').forEach(item => {

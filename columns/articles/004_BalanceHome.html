@@ -195,10 +195,6 @@
       </div>
     
     </a>
-
-    
-  
-
   </main>
 
   <!-- フッター -->
@@ -228,15 +224,15 @@
 
   <script>
     const menuBtn = document.getElementById("menu-toggle");
-const sideMenu = document.getElementById("side-menu");
+    const sideMenu = document.getElementById("side-menu");
 
-// 背景のオーバーレイを追加
-const overlay = document.createElement("div");
-overlay.classList.add("overlay");
-document.body.appendChild(overlay);
+  // 背景のオーバーレイを追加
+  const overlay = document.createElement("div");
+  overlay.classList.add("overlay");
+  document.body.appendChild(overlay);
 
-// 開閉処理
-menuBtn.addEventListener("click", () => {
+  // 開閉処理
+  menuBtn.addEventListener("click", () => {
   sideMenu.classList.toggle("open");
   overlay.classList.toggle("show");
 });

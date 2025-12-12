@@ -306,6 +306,18 @@ body {
   .check-step { display: none; }
   .check-step.active { display: flex; }
 
+  /* ===== デフォルト：中央寄せ ===== */
+  .check-step.active {
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ===== 結果画面だけ例外で上寄せ ===== */
+  #step-result.check-step.active {
+    justify-content: flex-start;
+    padding-top: 100px; /* ヘッダー分の余白 */
+    padding-bottom: 40px;
+  }
 
 }
 

@@ -222,7 +222,8 @@ body {
 .side-menu a,
 .side-menu a:visited,
 .side-menu a:hover,
-.side-menu a:active {
+.side-menu a:active,
+.menu-btn  {
   color: #222 !important;
   -webkit-text-fill-color: #222 !important;
   text-decoration: none;

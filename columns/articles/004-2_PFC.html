@@ -111,6 +111,14 @@
   box-shadow: 0 2px 6px rgba(0,0,0,0.06); 
 }
 
+/* カード内の画像を中央＋余白 */
+.pfc-chart-card img {
+  display: block;
+  margin: 16px auto;
+  max-width: 100%;
+  height: auto;
+}
+
 /* h3 */
 h3 {
   font-size: 1.2em;
@@ -120,56 +128,7 @@ h3 {
   color: #A3C04A;
 }
 
-/*  円グラフ配置  */
-.pfc-chart-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 
-/*  ドーナツグラフ本体  */
-.pfc-chart {
-  position: relative;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-/* 円グラフの各スライス */
-.slice {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(50% 50%, 100% 0, 100% 100%);
-}
-
-
-.protein {
-  background: #A3C04A;
-  transform: rotate(0deg);
-}
-
-.fat {
-  background: #F5B041;
-  transform: rotate(72deg);
-}
-
-.carb {
-  background: #5DADE2;
-  transform: rotate(216deg);
-}
-
-.center-hole {
-  position: absolute;
-  top: 25%;
-  left: 25%;
-  width: 50%;
-  height: 50%;
-  background: #fff;
-  border-radius: 50%;
-}
 
 .pfc-legend {
   list-style: none;
@@ -293,28 +252,7 @@ h3 {
     margin-bottom: 4px;
   }
 
-  /* --- ドーナツグラフ周り --- */
-  .pfc-chart-wrapper {
-    flex-direction: column;
-    align-items: center;     /* ← グラフ全体を中央寄せ */
-    justify-content: center;
-    width: 100%;
-    gap: 6px;                /* グラフの間隔 */
-    margin-top: -6px;        /* 余白を少し詰める */
-  }
-
-  /* ドーナツグラフ（自作）を中央に配置 */
-  .pfc-chart {
-    width: 110px;
-    height: 110px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  /* 厚労省の画像は中央寄せしないが、上余白は削る */
-  .pfc-chart-wrapper img {
-    margin: -10px auto 0 auto;  /* 上余白を詰め、横は中央寄り */
-  }
+ 
 }
 
 </style>
@@ -358,11 +296,10 @@ h3 {
     
     <h3>PFCバランスの目安</h3>
     <div class="pfc-chart-card">
-
         <img src="../../images/厚生労働省エネルギー産生栄養素バランス.png" >
-
     </div>
 
+  <br>
    <h4>PFCバランスの計算方法</h4>
    <p>まずは、1日に摂取すべきエネルギー量を把握しましょう。「適量チェック」から、自分のエネルギー量を確認することができます。</p>
    <p>次に、エネルギー量からたんぱく質・脂質・炭水化物の摂取量を求めていきます。<br>

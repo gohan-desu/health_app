@@ -722,26 +722,33 @@ a:hover {
 
 
   <script>
-        const menuBtn = document.getElementById('menuBtn'); // ハンバーガーアイコンのボタン
-        const sidebarMenu = document.getElementById('sidebarMenu'); // サイドバーメニュー自体
-        const overlay = document.getElementById('overlay'); // 背景のオーバーレイ
+    const menuBtn = document.getElementById("menu-toggle");
+    const sideMenu = document.getElementById("side-menu");
 
-        function toggleMenu() {
-            // 'open'クラスがあれば外し、なければ追加する（トグル）
-            sidebarMenu.classList.toggle('open'); 
+    // 背景のオーバーレイを追加
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
 
-            // 'open'クラスの状態に応じてオーバーレイの表示/非表示を切り替える
-            overlay.style.display = sidebarMenu.classList.contains('open') ? 'block' : 'none';
-        }
+   // 開閉処理
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      overlay.classList.toggle("show");
+  });
 
-        menuBtn.addEventListener('click', toggleMenu); // ハンバーガーボタンをクリックしたとき
-        overlay.addEventListener('click', toggleMenu); 
-
-
-        // メニュー内のアイテムをクリックしたとき
-        document.querySelectorAll('.sidebar-item').forEach(item => {
-            item.addEventListener('click', toggleMenu);
-        });
+  // 背景クリックで閉じる
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+   
+  // メニュー項目クリックでも閉じる
+  document.querySelectorAll("#side-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  });
   </script>
 </body>
 </html>

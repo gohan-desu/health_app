@@ -14,20 +14,30 @@
   flex: 1;
   padding-top: 56px;
   overflow-y: auto;
-  color: #2A621E;
+  color: #7A9E28;
   font-size: 1.4em;
   border-bottom: 3px solid #d9ead3;
-  padding-left: 210px;
-  padding-right: 210px;
+  
+   /* ここを修正 */
+  max-width: 900px;     /* ← 中央カラムの最大幅 */
+  margin: 0 auto;       /* ← 左右中央寄せ */
+  padding-left: 24px;   /* ← 内側の余白 */
+  padding-right: 24px;
+
   text-align: center;
 }
 
-.content h2 {
-  border-left: 5px solid #d9e76c;
-  display: inline-block;
-  padding-left: 10px;
-  font-size: 1.4em;
-  margin-bottom: 20px;
+/* h2（ページタイトル） */
+.article-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 18px;
+  letter-spacing: 0.5px;
+  padding-left: 12px;
+  border-left: 6px solid #A3C04A; /* 縦ライン */
+  line-height: 1.4;
+  text-align: left;
 }
 
 .content p {
@@ -64,6 +74,26 @@
   margin: 40px 0;
 }
 
+.text-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 18px;
+  margin: 20px auto;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.text-card p {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.text-card p:last-child {
+  margin-bottom: 0;
+}
+
+
 /* ===============================
    📱 スマホ対応（ここから重要）
 ================================ */
@@ -78,6 +108,7 @@
 
   .content h2 {
     font-size: 1.25rem;
+    text-align: left;
   }
 
   .content p {
@@ -117,7 +148,6 @@
   text-orientation: mixed !important;
   white-space: normal !important;
 }
-
 </style>
 
 <body>
@@ -164,14 +194,15 @@
   <!-- コンテンツ領域 -->
   <main class="content">
      <!-- ここにコラムの内容を書く -->
-    <h2>バランスの良い食事の考え方</h2>
+    <h2 class="article-title">バランスの良い食事の考え方</h2>
+    <div class="text-card">
     <p>栄養素をバランスよく摂る為の食事の考え方をまとめました。<br>
       自分に合った方法でバランスよく食事しましょう。</p>
     <p>「３・１・２弁当箱法」は、盛り付ける量を表面積比で把握する方法です。<br>
     大まかな盛り付けで簡単に主食・主菜・副菜を決められるため、初めての方におすすめです！</p>
     <p>「PFCバランス」は、総カロリー量に対する炭水化物、脂質、タンパク質の摂取比率で考える方法です。<br>
     自分に必要な栄養素をより正確に、理想的なバランスで摂取することができます。</p>
-
+    </div>
    
     <a href="./004-1_312bento.html" class="column-btn large">
       <div class="column-text">

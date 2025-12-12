@@ -208,29 +208,3 @@ body {
   width: 100%;
 }
 
-/* =========================
-   サイドメニュー文字色 強制黒（iOS対応）
-========================= */
-
-.side-menu,
-.side-menu * {
-  color: #222 !important;
-  -webkit-text-fill-color: #222 !important;
-}
-
-/* サイドメニュー内リンク状態すべて */
-.side-menu a,
-.side-menu a:visited,
-.side-menu a:hover,
-.side-menu a:active,
-.menu-btn  {
-  color: #222 !important;
-  -webkit-text-fill-color: #222 !important;
-  text-decoration: none;
-}
-
-/* span（テキスト部分）も明示的に */
-.side-menu a span {
-  color: #222 !important;
-  -webkit-text-fill-color: #222 !important;
-}

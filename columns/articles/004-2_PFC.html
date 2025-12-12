@@ -291,7 +291,7 @@ h3 {
 
   /* --- ドーナツグラフ周り --- */
   .pfc-chart-wrapper {
-    flex-direction: column;
+    display: flex;
     align-items: center;     /* ← グラフ全体を中央寄せ */
     justify-content: center;
     width: 100%;
@@ -309,7 +309,8 @@ h3 {
 
   /* 厚労省の画像は中央寄せしないが、上余白は削る */
   .pfc-chart-wrapper img {
-    margin: -10px auto 0 auto;  /* 上余白を詰め、横は中央寄り */
+    display: block;
+    margin: 0 auto;  /* 上余白を詰め、横は中央寄り */
   }
 }
 

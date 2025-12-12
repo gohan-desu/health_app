@@ -176,7 +176,7 @@ main {
    display: flex;
    justify-content: center;
    align-items: center;
-   border: 2px solid #f7f7f7; 
+   border: 2px solid #A3C04A; 
    border-radius: 10px;
    background-color: #f7f7f7; 
    padding: 20px;
@@ -325,6 +325,33 @@ a:hover {
     height: auto;    
     display: block;  
 }
+
+/* =============================
+   PC表示（幅1024px以上）
+   PFCページと同じ余白にする
+============================= */
+@media (min-width: 1024px) {
+
+  /* メインコンテンツ全体の左右余白 */
+  main {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+
+  /* 画像ボックスの最大幅を制限し、中央寄せ */
+  .content-box.image-placeholder {
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 画像を縮小して大きすぎないように調整 */
+  .content-box.image-placeholder img {
+    max-width: 70%;
+    height: auto;
+  }
+}
+
 
 /* ============================================
    📱 スマホ対応（幅 768px 以下）

@@ -6,6 +6,7 @@
     <title>3・1・2弁当箱法</title>
     <link rel="stylesheet" href="../../css/style.css" />
 </head>
+
 <style>
 body {
     background: #f7f7f7;
@@ -114,8 +115,6 @@ body {
     
 }
 
-
-
 .top-bar-title {
     font-size: 1.2rem;
     font-weight: bold;
@@ -127,9 +126,6 @@ body {
     line-height: 1.5; 
     margin-bottom: 0; 
     display: inline-block; /* 幅を文字の長さだけにする */
-
-    
-    
 }   
 
 .top-bar img{
@@ -159,6 +155,13 @@ main {
     font-size: 1.1em;
 }
 
+/* --- 余白 --- */
+  .box {
+    margin: 0 auto; /* 上下は0、左右は自動調整 */
+    padding: 40px 20px 10px; /* 上40px、左右20px、下10px */
+  }
+
+
 /* 写真のボックス */
 .content-box {
     border: 2px solid #ffffff; 
@@ -173,7 +176,7 @@ main {
    display: flex;
    justify-content: center;
    align-items: center;
-   border: 2px solid #f7f7f7; 
+   border: 2px solid #A3C04A; 
    border-radius: 10px;
    background-color: #f7f7f7; 
    padding: 20px;
@@ -253,7 +256,7 @@ a:hover {
 .image-placeholder-rule-detail2 {
     width: 400px; /* 画像エリアの固定幅 */
     height: 250px; /* 画像エリアの固定高さ */
-    border: 2px solid #f7f7f7 ;/* 外側の枠線 */
+    border: 2px solid #A3C04A ;/* 外側の枠線 */
     border-radius: 10px; 
     background-color: #f7f7f7; 
     display: flex;
@@ -323,6 +326,47 @@ a:hover {
     display: block;  
 }
 
+/* =============================
+   PC表示（幅1024px以上）
+   PFCページと同じ余白にする
+============================= */
+@media (min-width: 1024px) {
+
+  /* メインコンテンツ全体の左右余白 */
+  main {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+
+  /* 画像ボックスの最大幅を制限し、中央寄せ */
+  .content-box.image-placeholder {
+    max-width: 1150px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 画像を縮小して大きすぎないように調整 */
+  .content-box.image-placeholder img {
+    max-width: 100%;
+    height: auto;
+  }
+
+   .image-placeholder-rule-detail2 {
+    width: 50vw;              /* 画面の半分の幅 */
+    height: auto;             /* 高さは自動調整 */
+    max-width: 600px;         /* 必要なら最大幅の上限をつける（任意） */
+    margin-left: 250px;        /* 中央寄せ */
+    margin-right: 100px;       /* 中央寄せ */
+  }
+
+  .image-placeholder-rule-detail2 img {
+    width: 90%;              /* 枠内でフィット */
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+
 /* ============================================
    📱 スマホ対応（幅 768px 以下）
 ============================================ */
@@ -362,6 +406,13 @@ a:hover {
   .content-box {
     padding: 16px;
     font-size: 0.95rem;
+  }
+
+  /* --- 余白 --- */
+  .box {
+    width: 80%;
+    margin: 0 auto; /* 上下は0、左右は自動調整 */
+    padding: 40px 20px 10px; /* 上40px、左右20px、下10px */
   }
 
   /* --- 画像枠をスマホ幅に合わせる --- */
@@ -524,63 +575,60 @@ a:hover {
     height: auto;
   }
 }
+</style>
 
-
-    </style>
-    
-    <link rel="stylesheet" href="../../css/style.css">
-</head>
 <body>
+    <!-- ヘッダー -->
+  <header class="app-header">
+    <button class="menu-btn" id="menu-toggle">☰</button>
+    <h1 class="page-title">コラム</h1>
+    <button class="icon-btn">
+      <img src="../../images/icon.png" alt="ユーザー" />
+    </button>
+  </header>
+
+  <!-- サイドメニュー -->
+<nav class="side-menu" id="side-menu">
+  <ul>
+    <li>
+      <a href="../../index.html">
+        <img src="../../images/home.png" alt="ホーム">
+        <span>ホーム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../record/index.html">
+        <img src="../../images/pen.png" alt="記録">
+        <span>記録</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../columns/000_ColumnHome/index.html">
+        <img src="../../images/article.png" alt="コラム">
+        <span>コラム</span>
+      </a>
+    </li>
+    <li>
+      <a href="../../check/index.html">
+        <img src="../../images/human.png" alt="適量チェック">
+        <span>適量チェック</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
     <main>
-       
-       
-        <!--上のハンバーガーメニューとか-->
-      <!-- サイドメニュー -->
-     <div id="sidebarMenu" class="sidebar-menu">
-      <ul>
-        <li>
-        <a href="../../index.html">
-            <img src="../../images/home.png" alt="ホーム">
-            <span>ホーム</span>
-        </a>
-        </li>
-       <li>
-        <a href="../../record/index.html">
-          <img src="../../images/pen.png" alt="記録" />
-          <span>記録</span>
-        </a>
-       </li>
-       <li>
-        <a href="../../columns/000_ColumnHome/index.html">
-          <img src="../../images/article.png" alt="コラム" />
-          <span>コラム</span>
-        </a>
-       </li>
-       <li>
-        <a href="../../check/index.html">
-          <img src="../../images/human.png" alt="適量チェック" />
-          <span>適量チェック</span>
-        </a>
-       </li>
-      </ul>
-     </div>
         <div id="overlay" class="overlay"></div>
 
-       <div class="top-bar">
-        <div id="menuBtn" class="top-bar-item"><i class="fas fa-bars"></i></div>
-        <div class="top-bar-title">コラム</div>
-        <img src="../../images/icon.png" alt="ユーザー" />
-       </div>
         <section class="intro">
             <h2>🔰 初心者におすすめ！「3・1・2弁当箱法」</h2>
             <p>主食・主菜・副菜（<span class="ratio-highlight">3：1：2</span>）の比率で食事バランスを整えよう！</p>
 
             <div class="content-box image-placeholder">
                 <img src="../../images/312弁.png" >
-
-                
             </div>
         </section>
+
         <section class="definition scroll-container">
           <h3>「3・1・2弁当箱法」とは</h3>
           <p>
@@ -606,44 +654,42 @@ a:hover {
         <section class="rule-detail">
             <h3>１.食べる人にとってぴったりサイズの弁当箱を選ぶ</h3>
             <p>まず、1食に必要なエネルギー量（<span class="unit-highlight">kcal</span>）と同じ容量（<span class="unit-highlight">ml</span>）の弁当箱を選びます。1食に必要なエネルギー量は、性別や年齢、身体活動によって一人ひとり異なります。そのためご自身の適量を把握しておきましょう！</p>
-            <p>下図から自分に当てはまる値を確認しましょう。「<a href="#">適量チェック</a>」から自分の必要エネルギーを確認することもできます。</p>
-
+            <p>下図から自分に当てはまる値を確認しましょう。「<a href="../../check/index.html">適量チェック</a>」から自分の必要エネルギーを確認することもできます。</p>
+            <br>
             <div class="content-box image-placeholder">
                 <img src="../../images/エネ.png" >
             </div>
         </section>
         <section class="procedure1">
             <p>
-                ➀必要なエネルギー量を確認します。<br>
-                a）下のグラフから、性別・年齢から、当てはまる箇所をチェックします。<br>
+                <strong>➀必要なエネルギー量を確認します。</strong><br>
+                a）下のグラフから、性別・年齢から、当てはまる箇所をチェックします。<br><br>
                 b）普段の身体活動レベル※が高い人は▲、普通の人は●、低い人は▼が目安です。<br>
                 ※身体活動レベル<br>
                 高い▲：移動や立位の多い仕事の従事者。あるいは、スポーツb）普段の身体活動レベル※が高い人は▲、普通の人は●、低い人は▼が目安です。等余暇における活発な運動習慣を持っている。<br>
                 普通●：座位中心の仕事だが、職場内での移動や立位での作業・接客等、あるいは通勤・買い物・家事、軽いスポーツ等のいずれかを含む。<br>
-                低い▼：生活の大部分が座位で、静的な活動が中心。<br>
+                低い▼：生活の大部分が座位で、静的な活動が中心。<br><br>
                 c）次に、必要なら、体格チェックをし、よりぴったりサイズに修正します。
                 自分のBMIと目標とするBMIを比べて、適正範囲より少ない人は、上のグラフでチェックした箇所の上の方の値を、適正範囲より大きい人は、チェックした箇所の下の方の値を見て弁当箱のサイズを選びましょう。<br>
                 そして、選んだ弁当箱のサイズに見合った食事量を一定期間（１か月、3 か月、6 か月）、食べてみます。その結果に合わせて、弁当箱のサイズを見直していきます。
             </p>
         </section>
-
+        <br><br>
         <section class="procedure2">
             <p>
-                ➁自分に合ったサイズの弁当箱を決めます。<br>
+                <strong>➁自分に合ったサイズの弁当箱を決めます。</strong><br>
                 1日のエネルギー量（kcal）の1/3を1食の適量とし、そのエネルギー量（kcal）と同じ絶対値のサイズ（容量、mL）の弁当箱が自分に合った（適正）サイズです。<br>
                 例えば、1日1800kcalが適量の人の場合、1食は600 kcalですから、600mLの弁当箱が適正サイズとなります。
             </p>
-
-
         </section>
-
+        <br>
         <section class="rule-detail2">
             <div class="text-content">
                <h4>２．動かないようにしっかり詰める</h4>
-               <p>主食・主菜・副菜を隙間なくしっかり詰めることで、ちょうどよいエネルギーと栄養素になります。<br>
-               ちょうどよいサイズのお弁当箱が、ものさしの役割を果たします。その目安は、お弁当箱につめる3食分の食物（料理）が、すき間がないようにしまっていて、ふたをしたときに料理がつぶれない高さになっていることです。<br>
-               うまくつめられているかのチェックで、重視できるとすれば、お弁当箱の容量（mL）の約70%～80%程度に詰まります。<br>
-               50%未満では、料理の間に隙間を立てると、すき間ができ、70%～80%以上にするとふたで料理がおさえられ、ごはんがつぶれてしまいます。</p>
+               <p>主食・主菜・副菜を隙間なくしっかり詰めることで、ちょうどよいエネルギーと栄養素になります。</p><br>
+               <p>ちょうどよいサイズのお弁当箱が、ものさしの役割を果たします。その目安は、お弁当箱につめる3食分の食物（料理）が、すき間がないようにしまっていて、ふたをしたときに料理がつぶれない高さになっていることです。
+               うまくつめられているかのチェックで、重視できるとすれば、お弁当箱の容量（mL）の約70%～80%程度に詰まります。</p><br>
+               <p>50%未満では、料理の間に隙間を立てると、すき間ができ、70%～80%以上にするとふたで料理がおさえられ、ごはんがつぶれてしまいます。</p>
             </div>
 
            <div class="image-placeholder-rule-detail2">
@@ -651,11 +697,11 @@ a:hover {
            </div>
             
         </section>
-
+        <br>
         <section class="rule-detail3">
             <h5>３.主食3・主菜1副菜2の割合に料理を詰める</h5>
+            <br>
             <div class="content-box image-placeholder">
-                
                 <img src="../../images/d.png" >
             </div>
         </section>
@@ -669,10 +715,9 @@ a:hover {
                 調理法が重ならないように、油脂使用量の多い料理・食塩の使用量の多い料理は「1品まで」とします。<br>
                 調理法や調味法を重ねないように、多様な料理を組み合わせると、味のバランス、食事全体のエネルギー量や食塩量のバランスがとれ、適正な１食の量になります。<br>
             </p>
+            <br>
              <div class="content-box image-placeholder">
-            
                 <img src="../../images/oil.png" >
-
             </div>
         </section>
 
@@ -681,9 +726,7 @@ a:hover {
             <p>
                 食事で大切なことは、おいしそうで、きれいで、楽しいこと、彩りや季節感なども意識して、おいしそうに仕上げましょう。
             </p>
-
         <hr class="section-divider">
-
         </section>
 
         <section class="summary">
@@ -691,9 +734,14 @@ a:hover {
             <p>
                 「３・１・２弁当箱法」は自分の１食分の必要エネルギーを効率よく摂ることができます。割合で考えることで、わかりやすく、かんたんに食事づくりが行えます。<br>
                  またこの考え方は、主食・主菜・副菜の割合を分解して考えられるようになるため、普段の外食や家庭の食事でも応用できます。ぜひ試してみてください！
-
             </p>
         </section>
+
+        <div class="box">
+        <p>出典：NPO法人食生態学実践フォーラムHPより</p>
+        <p><a href="https://shokuseitaigaku.com/bentobako">https://shokuseitaigaku.com/bentobako</a>（2025年12月12日にアクセス）</p>
+        </div>
+
     </main>
 
      <!-- フッター -->
@@ -724,25 +772,33 @@ a:hover {
 
 
   <script>
-        const menuBtn = document.getElementById('menuBtn'); // ハンバーガーアイコンのボタン
-        const sidebarMenu = document.getElementById('sidebarMenu'); // サイドバーメニュー自体
-        const overlay = document.getElementById('overlay'); // 背景のオーバーレイ
+    const menuBtn = document.getElementById("menu-toggle");
+    const sideMenu = document.getElementById("side-menu");
 
-        function toggleMenu() {
-            // 'open'クラスがあれば外し、なければ追加する（トグル）
-            sidebarMenu.classList.toggle('open'); 
+    // 背景のオーバーレイを追加
+    const overlay = document.createElement("div");
+    overlay.classList.add("overlay");
+    document.body.appendChild(overlay);
 
-            // 'open'クラスの状態に応じてオーバーレイの表示/非表示を切り替える
-            overlay.style.display = sidebarMenu.classList.contains('open') ? 'block' : 'none';
-        }
+   // 開閉処理
+    menuBtn.addEventListener("click", () => {
+      sideMenu.classList.toggle("open");
+      overlay.classList.toggle("show");
+  });
 
-        menuBtn.addEventListener('click', toggleMenu); // ハンバーガーボタンをクリックしたとき
-        overlay.addEventListener('click', toggleMenu); 
-
-        // メニュー内のアイテムをクリックしたとき
-        document.querySelectorAll('.sidebar-item').forEach(item => {
-            item.addEventListener('click', toggleMenu);
-        });
+  // 背景クリックで閉じる
+  overlay.addEventListener("click", () => {
+    sideMenu.classList.remove("open");
+    overlay.classList.remove("show");
+  });
+   
+  // メニュー項目クリックでも閉じる
+  document.querySelectorAll("#side-menu a").forEach(link => {
+    link.addEventListener("click", () => {
+      sideMenu.classList.remove("open");
+      overlay.classList.remove("show");
+    });
+  });
   </script>
 </body>
 </html>

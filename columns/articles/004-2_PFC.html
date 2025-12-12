@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>コラム</title>
+  <title>PFCバランス</title>
   <link rel="stylesheet" href="../../css/style.css" />
 </head>
 <body>
@@ -17,36 +17,198 @@
 </header>
 
 <style>
-  /*--------------------------------
-    ベース調整（PC）
---------------------------------*/
-.content {
-  padding-left: 140px;
-  padding-right: 140px;
+   .content {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+  .content h2 {
+    border-left: 5px solid #A3C04A;
+    display: inline-block;
+    padding-left: 10px;
+    font-size: 1.8em;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .content h4{
+  color: #A3C04A;
+  margin-bottom: 20px;
+  font-size: 1.2em;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+.article-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 18px;
+  letter-spacing: 0.5px;
+  padding-left: 12px;
+  border-left: 6px solid #A3C04A; /* 縦ライン */
+  line-height: 1.4;
 }
 
-/*--------------------------------
-    スマホ対応（幅600px以下）
---------------------------------*/
+/* h3 セクションタイトル */
+.section-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #7A9E28; /* 黄緑 */
+  margin: 32px 0 14px;
+
+}
+
+/*  本文  */
+.content p,
+.article-wrapper p {
+  color: #333;
+  line-height: 2.0;      
+  margin: 0 0 26px;      /* 段落間の余白 */
+  font-size: 0.98rem;
+}
+/* 写真のボックス */
+.content-box {
+    border: 2px solid #ffffff; 
+    border-radius: 10px;
+    background-color: #ffffff; 
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.content-box.image-placeholder {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 2px solid #A3C04A; 
+   border-radius: 10px;
+   background-color: #ffffff; 
+   padding: 20px;
+   margin-bottom: 30px;
+   text-align: left; 
+}
+
+/* セクションの区切り（ドット線） */
+.section-divider {
+  border-top: 2px dotted #D7DE51;
+  margin: 40px 0;
+}
+
+.article-wrapper {
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto 120px;
+}
+
+/*  PFCカード全体  */
+.pfc-chart-card {
+  background: #fff;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 30px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06); 
+}
+
+/* h3 */
+.pfc-chart-card h3 {
+  font-size: 1.2em;
+  margin-bottom: 16px;
+  border-left: 6px solid #A3C04A;
+  padding-left: 10px;
+  color: #A3C04A;
+}
+
+/*  円グラフ配置  */
+.pfc-chart-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/*  ドーナツグラフ本体  */
+.pfc-chart {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* 円グラフの各スライス */
+.slice {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 50%, 100% 0, 100% 100%);
+}
+
+
+.protein {
+  background: #A3C04A;
+  transform: rotate(0deg);
+}
+
+.fat {
+  background: #F5B041;
+  transform: rotate(72deg);
+}
+
+.carb {
+  background: #5DADE2;
+  transform: rotate(216deg);
+}
+
+.center-hole {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background: #fff;
+  border-radius: 50%;
+}
+
+.pfc-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pfc-legend li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.pfc-legend .color {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.color.protein { background: #A3C04A; }
+.color.fat     { background: #F5B041; }
+.color.carb    { background: #5DADE2; }
+
+.calculate p{
+  text-align: left;
+ margin-left: 50px;
+ line-height: 1.4;  
+}
+
+/*  スマホ対応（幅 600px 以下）  */
 @media (max-width: 600px) {
 
-  /* 余白調整 */
   .content {
     padding-left: 20px;
     padding-right: 20px;
   }
-
   .article-wrapper {
     padding: 0 10px;
     margin-bottom: 80px;
   }
 
-  /* タイトル縮小 */
   .article-title {
     font-size: 1.4rem;
   }
@@ -55,40 +217,23 @@ img {
     font-size: 1.1rem;
   }
 
-  /* PFCグラフ：縦並び */
-  .pfc-chart-wrapper {
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
+  /* 列の幅を比率で調整 */
+  .col-food { width: 28%; padding-left: 2px !important; }
+  .col-nutri { width: 22%; padding-left: 2px !important; }
+  .col-energy,
+  .col-build,
+  .col-condition {
+    width: 16%;
   }
 
-  .pfc-chart {
-    width: 140px;
-    height: 140px;
-  }
-
-  /* 計算式ブロックの左余白をリセット */
-  .calculate p {
-    margin-left: 0;
-  }
-
-  /* 表が横にはみ出さないようにする */
-  .nutri-wrapper {
-    overflow-x: auto;
-  }
-
-  /* 表の文字縮小 */
+  /* ヘッダーの文字を小さく・行間調整 */
   .nutri-table-new thead th {
     font-size: 0.7rem;
     line-height: 1.2;
     padding: 8px 2px;
   }
 
-  .nutri-table-new tbody td {
-    padding: 12px 4px;
-  }
-
-  /* ドット小さく */
+  /* 丸アイコン小さめに */
   .dot {
     width: 24px;
     height: 24px;
@@ -99,11 +244,73 @@ img {
     height: 14px;
     margin-bottom: 2px;
   }
-}
 
-/* 横スクロール禁止 */
-html, body {
-  overflow-x: hidden;
+  /* 表の行の高さをスマホ用に詰める */
+  .nutri-table-new tbody td {
+    padding: 12px 4px;
+  }
+
+  /* 表の横スクロール防止 */
+  .nutri-wrapper {
+    overflow-x: auto;
+  }
+}
+    /* 横スクロール禁止 */
+    html, body {
+      overflow-x: hidden;
+    }
+
+/* ============================
+   📱 スマホ最適化（幅600px以下）
+   ・画像が見切れない
+   ・ドーナツグラフだけ中央
+   ・余白も最適化
+============================ */
+@media (max-width: 600px) {
+
+  /* すべての画像をスマホ幅にフィットさせる */
+  img,
+  .content img,
+  .content-box img,
+  .pfc-chart-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* --- 円グラフカード --- */
+  .pfc-chart-card {
+    padding: 10px 12px;
+    margin: 10px 0;
+  }
+
+  .pfc-chart-card h3 {
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+
+  /* --- ドーナツグラフ周り --- */
+  .pfc-chart-wrapper {
+    flex-direction: column;
+    align-items: center;     /* ← グラフ全体を中央寄せ */
+    justify-content: center;
+    width: 100%;
+    gap: 6px;                /* グラフの間隔 */
+    margin-top: -6px;        /* 余白を少し詰める */
+  }
+
+  /* ドーナツグラフ（自作）を中央に配置 */
+  .pfc-chart {
+    width: 110px;
+    height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* 厚労省の画像は中央寄せしないが、上余白は削る */
+  .pfc-chart-wrapper img {
+    margin: -10px auto 0 auto;  /* 上余白を詰め、横は中央寄り */
+  }
 }
 
 </style>
@@ -144,24 +351,22 @@ html, body {
     これは厚生労働省から推奨されている総エネルギー摂取量に占めるべき構成成分の割合をもとにした考え方です。</p>
    
     <div class="pfc-chart-card">
-  <h3>PFCバランスの目安</h3>
+      <h3>PFCバランスの目安</h3>
 
-   <div class="pfc-chart-wrapper">
-   <div class="pfc-chart">
+      <div class="pfc-chart-wrapper">
+      <div class="pfc-chart">
     </div>
-    
-    <img src="../../images/厚生労働省エネルギー産生栄養素バランス.png" >
-    
-   </div>
-   </div>
+        <img src="../../images/厚生労働省エネルギー産生栄養素バランス.png" >
+    </div>
+    </div>
 
    <h4>PFCバランスの計算方法</h4>
    <p>まずは、1日に摂取すべきエネルギー量を把握しましょう。「適量チェック」から、自分のエネルギー量を確認することができます。</p>
    <p>次に、エネルギー量からたんぱく質・脂質・炭水化物の摂取量を求めていきます。<br>
     三大栄養素それぞれ1gあたりのエネルギー量は、たんぱく質4kcal、脂質9kcal、炭水化物4kcalのため、<br>それぞれの割合は以下の計算式で求めることができます。</p>
    <div class="content-box image-placeholder">
-                <img src="../../images/式.png" >
-            </div>
+      <img src="../../images/式.png" >
+    </div>
     
   <p>例: 1日に2000kcalを必要とし、たんぱく質20％、脂質25％、炭水化物55％で摂りたい場合、このように算出できます。</p>
   <section class="calculate">
@@ -177,10 +382,8 @@ html, body {
 
     <hr class="section-divider">
    <div class="content-box image-placeholder">
-                <img src="../../images/エネルギー産生栄養バランス.png" >
-     
-              </div>
- 
+      <img src="../../images/エネルギー産生栄養バランス.png" >
+    </div>
     <p>
   <a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/kenkou/eiyou/syokuji_kijyun.html" target="_blank" rel="noopener">
     厚生労働省「日本人の食事摂取基準（2025年版）」

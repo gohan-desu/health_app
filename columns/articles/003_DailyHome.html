@@ -15,22 +15,29 @@
   flex: 1;
   padding-top: 56px;
   overflow-y: auto;
-  color: #2A621E; 
+  color: #7A9E28;
   font-size: 1.4em;
-  border-bottom: 3px solid #d9ead3; 
-  margin-top: 10px;
+  border-bottom: 3px solid #d9ead3;
+  
+   /* ここを修正 */
+  max-width: 900px;     /* ← 中央カラムの最大幅 */
+  margin: 0 auto;       /* ← 左右中央寄せ */
+  padding-left: 24px;   /* ← 内側の余白 */
+  padding-right: 24px;
+
   text-align: center;
-  padding-left: 210px;
-  padding-right: 210px;
 }
 
-.content h2 {
-  text-align: center;
-  border-left: 5px solid #d9e76c;
-  display: inline-block;
-  padding-left: 10px;
-  font-size: 1.4em;
-  margin-bottom: 20px;
+.article-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #333;
+  margin: 20px 0 18px;
+  letter-spacing: 0.5px;
+  padding-left: 12px;
+  border-left: 6px solid #A3C04A; /* 縦ライン */
+  line-height: 1.4;
+  text-align: left;
 }
 
 .content p {
@@ -40,12 +47,12 @@
   text-align: center;
 }
 
-/* 最初の p のみ色変更 */
-.content p:first-of-type {
-  color: #5C9956;
-  font-weight: bold;
-  font-size: 1.1em;
+.subtitle {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #A3C04A;
 }
+
 
 /* ===== コラムボタン共通 ===== */
 .column-btn {
@@ -74,6 +81,28 @@
 html, body {
   overflow-x: hidden;
 }
+
+
+.text-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px 18px;
+  margin: 20px auto;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.text-card p {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  color: #444;
+}
+
+.text-card p:last-child {
+  margin-bottom: 0;
+}
+
+
 
 
 /* ==============================================
@@ -211,25 +240,24 @@ html, body {
 
 <main class="content">
   <!-- ここにコラムの内容を書く -->
-  <h2>一日に必要なエネルギーと食事量</h2>
-  <p>まず自分のデータを知ろう！</p>
-  <p>食事バランスガイド」に基づき、１日の適量について解説しています。<br>
-     １日に必要なエネルギーを把握し、「何を」「どのように」食事をすればいいのか理解しましょう。</p>
-   
+  <h2 class="article-title">一日に必要なエネルギーと食事量</h2>
+  <p class="subtitle">まず自分のデータを知ろう！</p>
+  <div class="text-card">
+    <p>食事バランスガイド」に基づき、１日の適量について解説しています。<br>
+    １日に必要なエネルギーを把握し、「何を」「どのように」食事をすればいいのか理解しましょう。</p>
+  </div>
+
   <a href="../../columns/articles/003-1_DailyEnergy.html" class="column-btn large">
     <div class="column-text">
-      <h3>一日に必要なエネルギー</h3>
+      <h4>一日に必要なエネルギー</h4>
     </div>
-    
   </a>
 
   <a href="../../columns/articles/003-2_DailySV.html" class="column-btn large">
     <div class="column-text">
       <h4>一日に必要な食事量「つ（SV）」</h4>
     </div>
-    
   </a>
-  
 
 </main>
 

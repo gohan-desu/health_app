@@ -238,6 +238,23 @@ body {
   transition: 0.2s;
 }
 
+/* iOSのリンク青対策 */
+.btn,
+.btn:visited,
+.btn:hover,
+.btn:active {
+  color: #222;
+  text-decoration: none;
+}
+
+.side-menu a,
+.side-menu a:visited,
+.side-menu a:hover,
+.side-menu a:active {
+  color: #333;
+  text-decoration: none;
+}
+
 
 /* =============================
    📱 600px以下（スマホ）
@@ -366,6 +383,24 @@ body {
   }
 
 }
+
+/* iOS Safari 強制文字色固定 */
+.btn,
+.btn:visited,
+.btn:hover,
+.side-menu a,
+.side-menu a span {
+  color: #4c3f3f !important;
+  -webkit-text-fill-color: #4c3f3f !important;
+}
+
+button {
+  color: #4c3f3f !important;
+  -webkit-text-fill-color: #4c3f3f !important;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
 
   </style>
 </head>
